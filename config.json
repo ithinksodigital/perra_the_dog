@@ -4,7 +4,7 @@
     { "id": "uslugi", "visible": true, "order": 1, "label": "Usługi" },
     { "id": "galeria", "visible": true, "order": 2, "label": "Galeria" },
     { "id": "opinie", "visible": true, "order": 3, "label": "Opinie" },
-    { "id": "rejestracja", "visible": true, "order": 4, "label": "Rejestracja" },
+    { "id": "rejestracja", "visible": false, "order": 4, "label": "Rejestracja" },
     { "id": "kontakt", "visible": true, "order": 5, "label": "Kontakt" }
   ],
   "forms": [
