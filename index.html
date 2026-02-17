@@ -20,6 +20,7 @@
       <ul class="nav-links">
         <li><a href="#uslugi">Usługi</a></li>
         <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#opinie">Opinie</a></li>
         <li><a href="#rejestracja">Rejestracja</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -31,6 +32,7 @@
     <a href="#" class="dot active" data-section="hero" aria-label="Hero"></a>
     <a href="#uslugi" class="dot" data-section="uslugi" aria-label="Usługi"></a>
     <a href="#galeria" class="dot" data-section="galeria" aria-label="Galeria"></a>
+    <a href="#opinie" class="dot" data-section="opinie" aria-label="Opinie"></a>
     <a href="#rejestracja" class="dot" data-section="rejestracja" aria-label="Rejestracja"></a>
     <a href="#kontakt" class="dot" data-section="kontakt" aria-label="Kontakt"></a>
   </nav>
@@ -77,7 +79,18 @@
       </div>
     </section>
 
-    <section id="rejestracja" class="panel section">
+    <section id="opinie" class="panel section">
+      <div class="wrap">
+        <p class="label">Co mówią opiekunowie</p>
+        <h2 class="title">Opinie</h2>
+        <p class="intro">Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów.</p>
+        <div id="testimonials-grid" class="testimonials-grid" data-json="testimonials.json">
+          <!-- Testimoniale ładowane z testimonials.json -->
+        </div>
+      </div>
+    </section>
+
+    <section id="rejestracja" class="panel section dark">
       <div class="wrap">
         <p class="label">Zapisz się</p>
         <h2 class="title">Rejestracja</h2>
@@ -97,7 +110,7 @@
       </div>
     </section>
 
-    <section id="kontakt" class="panel section dark">
+    <section id="kontakt" class="panel section">
       <div class="wrap">
         <p class="label">Bądźmy w kontakcie</p>
         <h2 class="title">Social media</h2>
@@ -235,6 +248,56 @@
         })
         .catch(function() {
           renderGalleryList(DEFAULT_GALLERY);
+        });
+    }
+
+    // Testimoniale: z testimonials.json lub wbudowane
+    var testimonialsEl = document.getElementById('testimonials-grid');
+    var testimonialsJsonUrl = (testimonialsEl && testimonialsEl.getAttribute('data-json')) || 'testimonials.json';
+    var DEFAULT_TESTIMONIALS = [
+      { quote: 'Po kilku spotkaniach nasz pies w końcu przestał ciągnąć na smyczy. Cierpliwość i konkretne wskazówki — polecam.', author: 'Anna K.', context: 'opieka nad Borysem, border collie' },
+      { quote: 'Profesjonalnie, bez oceniania. Dostałyśmy plan działania i realne narzędzia. Relacja z psem naprawdę się zmieniła.', author: 'Magda i Ola', context: 'konsultacja + spacery treningowe' },
+      { quote: 'Warsztat otworzył mi oczy na to, jak mój pies odbiera świat. Teraz spacerujemy spokojniej — i ja, i Luna.', author: 'Tomek', context: 'uczestnik warsztatów' }
+    ];
+    function renderTestimonial(item) {
+      var quote = (item && item.quote) ? item.quote : '';
+      var author = (item && item.author) ? item.author : '';
+      var context = (item && item.context) ? item.context : '';
+      var card = document.createElement('blockquote');
+      card.className = 'testimonial-card';
+      var q = document.createElement('p');
+      q.className = 'testimonial-quote';
+      q.textContent = quote;
+      card.appendChild(q);
+      var meta = document.createElement('footer');
+      meta.className = 'testimonial-meta';
+      var nameSpan = document.createElement('strong');
+      nameSpan.className = 'testimonial-author';
+      nameSpan.textContent = author;
+      meta.appendChild(nameSpan);
+      if (context) {
+        var ctxSpan = document.createElement('span');
+        ctxSpan.className = 'testimonial-context';
+        ctxSpan.textContent = context;
+        meta.appendChild(ctxSpan);
+      }
+      card.appendChild(meta);
+      return card;
+    }
+    function renderTestimonialsList(list) {
+      if (!testimonialsEl) return;
+      testimonialsEl.innerHTML = '';
+      list.forEach(function(item) { testimonialsEl.appendChild(renderTestimonial(item)); });
+    }
+    if (testimonialsEl) {
+      fetch(testimonialsJsonUrl)
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(data) {
+          var list = Array.isArray(data) ? data : (data.testimonials || data.items || []);
+          renderTestimonialsList(list.length ? list : DEFAULT_TESTIMONIALS);
+        })
+        .catch(function() {
+          renderTestimonialsList(DEFAULT_TESTIMONIALS);
         });
     }
 
