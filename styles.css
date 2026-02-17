@@ -376,6 +376,9 @@ body {
   color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 500;
+  pointer-events: none;
+  user-select: none;
+  cursor: default;
 }
 .scroll-line {
   width: 1px;
@@ -386,6 +389,24 @@ body {
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
   50% { opacity: 1; transform: scaleY(1); }
+}
+
+@media (max-width: 768px) {
+  .scroll-hint {
+    bottom: 28px;
+    left: 24px;
+    font-size: 0.85rem;
+  }
+  .scroll-line {
+    width: 2px;
+    height: 36px;
+    opacity: 0.9;
+    animation: scrollPulseMobile 1.8s ease-in-out infinite;
+  }
+}
+@keyframes scrollPulseMobile {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(10px); opacity: 1; }
 }
 
 /* --- Buttons --- */
