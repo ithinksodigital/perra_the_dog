@@ -305,8 +305,10 @@ body {
 .hero.in .hero-cta { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
 .hero.in .scroll-hint { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 @media (max-width: 768px) {
-  .hero .scroll-hint { transform: translateY(16px) translateX(-50%); }
-  .hero.in .scroll-hint { transform: translateY(0) translateX(-50%); }
+  .hero .scroll-hint,
+  .hero.in .scroll-hint {
+    display: none;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero .hero-label, .hero .hero-title, .hero .hero-desc, .hero .hero-cta, .hero .scroll-hint {
@@ -386,9 +388,16 @@ body {
   color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 500;
-  pointer-events: none;
-  user-select: none;
-  cursor: default;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+.scroll-hint:hover {
+  color: var(--accent);
+}
+.scroll-hint:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 .scroll-hint-arrow {
   display: none;
@@ -404,39 +413,6 @@ body {
   50% { opacity: 1; transform: scaleY(1); }
 }
 
-@media (max-width: 768px) {
-  .scroll-hint {
-    bottom: 24px;
-    left: 50%;
-    right: auto;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    gap: 10px;
-    padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  }
-  .scroll-hint-text {
-    white-space: nowrap;
-  }
-  .scroll-hint-arrow {
-    display: inline-block;
-    font-size: 1rem;
-    color: var(--accent);
-    opacity: 0.85;
-    animation: scrollArrowBounce 1.8s ease-in-out infinite;
-  }
-  .scroll-line {
-    width: 1px;
-    height: 24px;
-    opacity: 0.75;
-    animation: scrollPulseMobile 1.8s ease-in-out infinite;
-  }
-}
 @keyframes scrollPulseMobile {
   0%, 100% { transform: translateY(0); opacity: 0.5; }
   50% { transform: translateY(6px); opacity: 0.9; }
