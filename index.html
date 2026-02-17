@@ -19,6 +19,7 @@
       </div>
       <ul class="nav-links">
         <li><a href="#uslugi">Usługi</a></li>
+        <li><a href="#galeria">Galeria</a></li>
         <li><a href="#rejestracja">Rejestracja</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -29,6 +30,7 @@
   <nav class="dots" aria-hidden="true">
     <a href="#" class="dot active" data-section="hero" aria-label="Hero"></a>
     <a href="#uslugi" class="dot" data-section="uslugi" aria-label="Usługi"></a>
+    <a href="#galeria" class="dot" data-section="galeria" aria-label="Galeria"></a>
     <a href="#rejestracja" class="dot" data-section="rejestracja" aria-label="Rejestracja"></a>
     <a href="#kontakt" class="dot" data-section="kontakt" aria-label="Kontakt"></a>
   </nav>
@@ -64,7 +66,18 @@
       </div>
     </section>
 
-    <section id="rejestracja" class="panel section dark">
+    <section id="galeria" class="panel section dark">
+      <div class="wrap">
+        <p class="label">Zdjęcia</p>
+        <h2 class="title">Galeria</h2>
+        <p class="intro">Kadry z konsultacji, spacerów i warsztatów.</p>
+        <div id="gallery-grid" class="gallery-grid" data-json="gallery.json">
+          <!-- Zdjęcia ładowane z gallery.json -->
+        </div>
+      </div>
+    </section>
+
+    <section id="rejestracja" class="panel section">
       <div class="wrap">
         <p class="label">Zapisz się</p>
         <h2 class="title">Rejestracja</h2>
@@ -84,7 +97,7 @@
       </div>
     </section>
 
-    <section id="kontakt" class="panel section">
+    <section id="kontakt" class="panel section dark">
       <div class="wrap">
         <p class="label">Bądźmy w kontakcie</p>
         <h2 class="title">Social media</h2>
@@ -175,6 +188,53 @@
         })
         .catch(function() {
           renderServicesList(DEFAULT_SERVICES);
+        });
+    }
+
+    // Galeria: z gallery.json lub zdjęcia zastępcze (działają przy file://)
+    var galleryEl = document.getElementById('gallery-grid');
+    var galleryJsonUrl = (galleryEl && galleryEl.getAttribute('data-json')) || 'gallery.json';
+    var DEFAULT_GALLERY = [
+      { src: 'https://picsum.photos/500/340?random=1', alt: 'Zdjęcie 1' },
+      { src: 'https://picsum.photos/500/340?random=2', alt: 'Zdjęcie 2' },
+      { src: 'https://picsum.photos/500/340?random=3', alt: 'Zdjęcie 3' },
+      { src: 'https://picsum.photos/500/340?random=4', alt: 'Zdjęcie 4' },
+      { src: 'https://picsum.photos/500/340?random=5', alt: 'Zdjęcie 5' },
+      { src: 'https://picsum.photos/500/340?random=6', alt: 'Zdjęcie 6' }
+    ];
+    function renderPhoto(item) {
+      var src = typeof item === 'string' ? item : (item.src || '');
+      var alt = (typeof item === 'object' && item && item.alt) ? item.alt : '';
+      var box = document.createElement('div');
+      box.className = 'photo-box';
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      img.loading = 'lazy';
+      img.onerror = function() { this.style.display = 'none'; this.parentElement.classList.add('photo-box--error'); };
+      box.appendChild(img);
+      if (alt) {
+        var cap = document.createElement('span');
+        cap.className = 'photo-box-caption';
+        cap.textContent = alt;
+        box.appendChild(cap);
+      }
+      return box;
+    }
+    function renderGalleryList(list) {
+      if (!galleryEl) return;
+      galleryEl.innerHTML = '';
+      list.forEach(function(item) { galleryEl.appendChild(renderPhoto(item)); });
+    }
+    if (galleryEl) {
+      fetch(galleryJsonUrl)
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(data) {
+          var list = Array.isArray(data) ? data : (data.images || data.photos || data.items || []);
+          renderGalleryList(list.length ? list : DEFAULT_GALLERY);
+        })
+        .catch(function() {
+          renderGalleryList(DEFAULT_GALLERY);
         });
     }
 
