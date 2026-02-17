@@ -12,7 +12,8 @@
   --accent-dim: rgba(0, 0, 0, 0.06);
   --accent-text: #ffffff;
   --white: #ffffff;
-  --font: 'Syne', sans-serif;
+  --font-heading: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
 }
@@ -60,7 +61,7 @@ button:focus-visible,
 
 body {
   margin: 0;
-  font-family: var(--font);
+  font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.62;
   letter-spacing: 0.02em;
@@ -92,6 +93,7 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .logo {
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.02em;
@@ -113,7 +115,7 @@ body {
 }
 .accent-option {
   padding: 6px 12px;
-  font-family: var(--font);
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -270,6 +272,7 @@ body {
 }
 .hero-inner { position: relative; z-index: 1; padding: 0 32px; max-width: 640px; }
 .hero-label {
+  font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -278,6 +281,7 @@ body {
   margin: 0 0 20px 0;
 }
 .hero-title {
+  font-family: var(--font-heading);
   font-size: clamp(2.4rem, 5.5vw, 3.75rem);
   font-weight: 800;
   line-height: 1.2;
@@ -319,7 +323,7 @@ body {
 .btn {
   display: inline-block;
   padding: 16px 32px;
-  font-family: var(--font);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -349,6 +353,7 @@ body {
 /* --- Section blocks --- */
 .section.dark { background: var(--surface); }
 .label {
+  font-family: var(--font-heading);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -357,6 +362,7 @@ body {
   margin: 0 0 8px 0;
 }
 .title {
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   letter-spacing: 0.01em;
@@ -398,6 +404,7 @@ body {
   display: block;
 }
 .card h3 {
+  font-family: var(--font-heading);
   font-size: 1.08rem;
   font-weight: 700;
   margin: 0 0 10px 0;
@@ -513,7 +520,7 @@ body {
   line-height: 1;
   color: var(--accent);
   opacity: 0.95;
-  font-family: var(--font);
+  font-family: var(--font-heading);
   font-weight: 700;
 }
 .testimonial-meta {
@@ -527,6 +534,7 @@ body {
   margin: 0;
 }
 .testimonial-author {
+  font-family: var(--font-heading);
   color: var(--text);
   font-weight: 600;
   font-size: 0.95rem;
@@ -574,6 +582,7 @@ body {
   transform: translateY(-4px);
 }
 .form-card-title {
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.08rem;
   display: block;
