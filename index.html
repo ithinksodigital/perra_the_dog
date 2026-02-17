@@ -101,20 +101,28 @@
       </div>
     </section>
 
-    <section id="kontakt" class="panel section">
+    <section id="social-media" class="panel section">
       <div class="wrap">
         <p class="label">Bądźmy w kontakcie</p>
         <h2 class="title">Social media</h2>
         <p class="intro">Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś.</p>
-        <div id="socials-container" class="socials"><!-- wypełniane z config.json --></div>
+        <div id="socials-container" class="socials"><!-- Instagram, Facebook z config.json --></div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="panel section">
+      <div class="wrap">
+        <p class="label">Kontakt</p>
+        <h2 class="title">Kontakt</h2>
+        <p class="intro">Lokalizacja, e-mail i telefon.</p>
+        <div id="contact-buttons" class="socials"><!-- Warszawa, email, telefon z config.json --></div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer id="minimal-footer" class="footer footer--minimal">
     <div class="footer-inner wrap">
       <p class="footer-copy">© <span id="year"></span> perra the dog</p>
-      <p id="footer-contact" class="footer-contact"><!-- wypełniane z config.json --></p>
     </div>
   </footer>
 
@@ -155,7 +163,8 @@
         { id: 'galeria', visible: true, order: 2, label: 'Galeria' },
         { id: 'opinie', visible: true, order: 3, label: 'Opinie' },
         { id: 'rejestracja', visible: true, order: 4, label: 'Rejestracja' },
-        { id: 'kontakt', visible: true, order: 5, label: 'Kontakt' }
+        { id: 'social-media', visible: true, order: 5, label: 'Social media' },
+        { id: 'kontakt', visible: true, order: 6, label: 'Kontakt' }
       ],
       forms: [
         { title: 'Konsultacja behawioralna', description: 'Umów pierwszą konsultację', url: '#' },
@@ -165,9 +174,8 @@
         { name: 'Instagram', url: '#', icon: 'instagram' },
         { name: 'Facebook', url: '#', icon: 'facebook' }
       ],
-      footer: { email: 'email@example.pl', phoneHref: '+48123456789', phoneDisplay: '+48 123 456 789' }
+      footer: { city: 'Warszawa', mapUrl: '', email: 'email@example.pl', phoneHref: '+48123456789', phoneDisplay: '+48 123 456 789' }
     };
-
     function escapeHtml(text) {
       var div = document.createElement('div');
       div.textContent = text;
@@ -232,7 +240,7 @@
       }
 
       var socialsContainer = document.getElementById('socials-container');
-      if (socialsContainer && cfg.socials && cfg.socials.length) {
+      if (socialsContainer && (cfg.socials || []).length) {
         var igPath = "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z";
         var fbPath = "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z";
         socialsContainer.innerHTML = '';
@@ -248,14 +256,33 @@
         });
       }
 
-      var footerContact = document.getElementById('footer-contact');
-      if (footerContact && cfg.footer) {
-        var f = cfg.footer;
-        var parts = [];
-        if (f.email) parts.push('<a href="mailto:' + escapeHtml(f.email) + '">' + escapeHtml(f.email) + '</a>');
-        if (f.phoneHref || f.phoneDisplay) parts.push('<a href="tel:' + escapeHtml((f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '')) + '">' + escapeHtml(f.phoneDisplay || f.phoneHref || '') + '</a>');
-        footerContact.innerHTML = parts.join('<span class="footer-sep">·</span>');
+      var contactButtons = document.getElementById('contact-buttons');
+      if (contactButtons) {
+        var pinPath = "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z";
+        var mailPath = "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2l8 5 8-5v10H4V6z";
+        var phonePath = "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z";
+        function getIconPath(icon) { if (icon === 'pin') return pinPath; if (icon === 'email') return mailPath; if (icon === 'phone') return phonePath; return pinPath; }
+        function addContact(href, label, icon, targetBlank) {
+          var a = document.createElement('a');
+          a.href = href || '#';
+          if (targetBlank) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+          a.className = 'social social--contact';
+          a.setAttribute('aria-label', label || '');
+          a.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="' + getIconPath(icon) + '"/></svg><span>' + escapeHtml(label || '') + '</span>';
+          contactButtons.appendChild(a);
+        }
+        var f = cfg.footer || {};
+        if (f.city) {
+          var locHref = (f.mapUrl && f.mapUrl.trim()) ? f.mapUrl : ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(f.city));
+          addContact(locHref, f.city, 'pin', true);
+        }
+        if (f.email) addContact('mailto:' + f.email, f.email, 'email', false);
+        if (f.phoneHref || f.phoneDisplay) {
+          var phoneNum = (f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '');
+          addContact('tel:' + phoneNum, f.phoneDisplay || f.phoneHref || '', 'phone', false);
+        }
       }
+
       updateDots();
     }
 
@@ -454,11 +481,17 @@
       scrollTick = true;
       requestAnimationFrame(function() {
         updateDots();
+        var minimalFooter = document.getElementById('minimal-footer');
+        if (minimalFooter) minimalFooter.classList.toggle('visible', window.scrollY > 60);
         scrollTick = false;
       });
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('load', updateDots);
+    window.addEventListener('load', function() {
+      updateDots();
+      var minimalFooter = document.getElementById('minimal-footer');
+      if (minimalFooter) minimalFooter.classList.toggle('visible', window.scrollY > 60);
+    });
 
     var backToTop = document.getElementById('back-to-top');
     if (backToTop) {

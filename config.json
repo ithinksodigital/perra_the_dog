@@ -1,21 +1,75 @@
 {
   "sections": [
-    { "id": "hero", "visible": true, "order": 0, "label": "Start" },
-    { "id": "uslugi", "visible": true, "order": 1, "label": "Usługi" },
-    { "id": "galeria", "visible": true, "order": 2, "label": "Galeria" },
-    { "id": "opinie", "visible": true, "order": 3, "label": "Opinie" },
-    { "id": "rejestracja", "visible": false, "order": 4, "label": "Rejestracja" },
-    { "id": "kontakt", "visible": true, "order": 5, "label": "Kontakt" }
+    {
+      "id": "hero",
+      "visible": true,
+      "order": 0,
+      "label": "Start"
+    },
+    {
+      "id": "uslugi",
+      "visible": true,
+      "order": 1,
+      "label": "Usługi"
+    },
+    {
+      "id": "galeria",
+      "visible": true,
+      "order": 2,
+      "label": "Galeria"
+    },
+    {
+      "id": "opinie",
+      "visible": true,
+      "order": 3,
+      "label": "Opinie"
+    },
+    {
+      "id": "rejestracja",
+      "visible": false,
+      "order": 4,
+      "label": "Rejestracja"
+    },
+    {
+      "id": "social-media",
+      "visible": true,
+      "order": 5,
+      "label": "Social media"
+    },
+    {
+      "id": "kontakt",
+      "visible": true,
+      "order": 6,
+      "label": "Kontakt"
+    }
   ],
   "forms": [
-    { "title": "Konsultacja behawioralna", "description": "Umów pierwszą konsultację", "url": "https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_1" },
-    { "title": "Warsztaty / szkolenia", "description": "Zapisz się na warsztat grupowy", "url": "https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_2" }
+    {
+      "title": "Konsultacja behawioralna",
+      "description": "Umów pierwszą konsultację",
+      "url": "https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_1"
+    },
+    {
+      "title": "Warsztaty / szkolenia",
+      "description": "Zapisz się na warsztat grupowy",
+      "url": "https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_2"
+    }
   ],
   "socials": [
-    { "name": "Instagram", "url": "https://www.instagram.com/TWOJ_INSTAGRAM/", "icon": "instagram" },
-    { "name": "Facebook", "url": "https://www.facebook.com/TWOJ_FACEBOOK/", "icon": "facebook" }
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/TWOJ_INSTAGRAM/",
+      "icon": "instagram"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/TWOJ_FACEBOOK/",
+      "icon": "facebook"
+    }
   ],
   "footer": {
+    "city": "Warszawa",
+    "mapUrl": "",
     "email": "TWOJ_EMAIL",
     "phoneHref": "+48TWOJ_TELEFON",
     "phoneDisplay": "+48 TWOJ_TELEFON"
