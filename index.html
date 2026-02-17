@@ -326,10 +326,15 @@
         var slides = track.querySelectorAll('.testimonial-slide');
         var n = slides.length;
         if (n === 0) return;
+        var wrap = track.parentElement;
         var prevBtn = document.querySelector('.testimonials-prev');
         var nextBtn = document.querySelector('.testimonials-next');
         var dotsEl = document.getElementById('testimonials-dots');
         var idx = 0;
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var SWIPE_MIN = 50;
+
         function goTo(i) {
           idx = Math.max(0, Math.min(i, n - 1));
           track.style.transform = 'translateX(-' + idx * 100 + '%)';
@@ -338,6 +343,53 @@
             dots.forEach(function(d, k) { d.classList.toggle('active', k === idx); d.setAttribute('aria-current', k === idx ? 'true' : 'false'); });
           }
         }
+
+        function applyDrag(px) {
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(calc(-' + idx * 100 + '% + ' + px + 'px))';
+        }
+
+        function endDrag() {
+          track.style.transition = '';
+        }
+
+        if (wrap && n > 1) {
+          wrap.addEventListener('touchstart', function(e) {
+            if (e.touches.length !== 1) return;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+          }, { passive: true });
+          wrap.addEventListener('touchmove', function(e) {
+            if (e.touches.length !== 1) return;
+            var x = e.touches[0].clientX;
+            var y = e.touches[0].clientY;
+            var dx = x - touchStartX;
+            var dy = y - touchStartY;
+            var slideWidth = wrap.offsetWidth;
+            var maxDrag = slideWidth * 0.4;
+            var clamped = dx;
+            if (idx === 0 && dx > 0) clamped = dx * 0.3;
+            else if (idx === n - 1 && dx < 0) clamped = dx * 0.3;
+            else if (dx > maxDrag) clamped = maxDrag;
+            else if (dx < -maxDrag) clamped = -maxDrag;
+            else clamped = dx;
+            applyDrag(clamped);
+          }, { passive: true });
+          wrap.addEventListener('touchend', function(e) {
+            var endX = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : touchStartX;
+            var endY = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : touchStartY;
+            var dx = endX - touchStartX;
+            var dy = endY - touchStartY;
+            endDrag();
+            if (Math.abs(dx) > SWIPE_MIN && Math.abs(dx) > Math.abs(dy)) {
+              if (dx < 0) goTo(idx + 1);
+              else goTo(idx - 1);
+            } else {
+              goTo(idx);
+            }
+          }, { passive: true });
+        }
+
         if (dotsEl && n > 1) {
           dotsEl.innerHTML = '';
           for (var d = 0; d < n; d++) {
