@@ -100,7 +100,8 @@ body {
   color: var(--text);
   text-decoration: none;
 }
-.logo span { color: var(--accent); }
+.logo,
+.logo span { color: var(--text); }
 .nav-right {
   display: flex;
   align-items: center;

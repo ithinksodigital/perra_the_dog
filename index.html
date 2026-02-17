@@ -20,8 +20,8 @@
     <a href="#" class="logo">perra<span> the dog</span></a>
     <div class="nav-right">
       <div class="accent-toggle" role="group" aria-label="Kolor akcentu">
-        <button type="button" class="accent-option" data-accent="black" aria-pressed="true">Czarny</button>
-        <button type="button" class="accent-option" data-accent="mint" aria-pressed="false">Miętowy</button>
+        <button type="button" class="accent-option" data-accent="black" aria-pressed="false">Czarny</button>
+        <button type="button" class="accent-option" data-accent="mint" aria-pressed="true">Miętowy</button>
       </div>
       <ul id="nav-links" class="nav-links"><!-- wypełniane z config.json --></ul>
     </div>
@@ -114,7 +114,7 @@
 
     var ACCENT_KEY = 'perra-accent';
     function getAccent() {
-      try { return localStorage.getItem(ACCENT_KEY) || 'black'; } catch (e) { return 'black'; }
+      try { return localStorage.getItem(ACCENT_KEY) || 'mint'; } catch (e) { return 'mint'; }
     }
     function setAccent(value) {
       try { localStorage.setItem(ACCENT_KEY, value); } catch (e) {}
