@@ -241,6 +241,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .panel { transition: opacity 0.4s ease; }
   .scroll-line { animation: none; opacity: 0.7; }
+  .scroll-hint-arrow { animation: none; }
 }
 
 /* --- Back to top --- */
@@ -303,6 +304,10 @@ body {
 .hero.in .hero-desc { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
 .hero.in .hero-cta { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
 .hero.in .scroll-hint { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+@media (max-width: 768px) {
+  .hero .scroll-hint { transform: translateY(16px) translateX(-50%); }
+  .hero.in .scroll-hint { transform: translateY(0) translateX(-50%); }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero .hero-label, .hero .hero-title, .hero .hero-desc, .hero .hero-cta, .hero .scroll-hint {
     opacity: 1;
@@ -340,6 +345,11 @@ body {
   background: radial-gradient(ellipse 90% 70% at 30% 40%, var(--accent-dim) 0%, transparent 55%);
 }
 .hero-inner { position: relative; z-index: 1; padding: 0 32px; max-width: 640px; }
+@media (max-width: 768px) {
+  .hero-cta {
+    justify-content: center;
+  }
+}
 .hero-label {
   font-family: var(--font-heading);
   font-size: 0.8rem;
@@ -380,6 +390,9 @@ body {
   user-select: none;
   cursor: default;
 }
+.scroll-hint-arrow {
+  display: none;
+}
 .scroll-line {
   width: 1px;
   height: 40px;
@@ -393,20 +406,44 @@ body {
 
 @media (max-width: 768px) {
   .scroll-hint {
-    bottom: 28px;
-    left: 24px;
-    font-size: 0.85rem;
+    bottom: 24px;
+    left: 50%;
+    right: auto;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+  .scroll-hint-text {
+    white-space: nowrap;
+  }
+  .scroll-hint-arrow {
+    display: inline-block;
+    font-size: 1rem;
+    color: var(--accent);
+    opacity: 0.85;
+    animation: scrollArrowBounce 1.8s ease-in-out infinite;
   }
   .scroll-line {
-    width: 2px;
-    height: 36px;
-    opacity: 0.9;
+    width: 1px;
+    height: 24px;
+    opacity: 0.75;
     animation: scrollPulseMobile 1.8s ease-in-out infinite;
   }
 }
 @keyframes scrollPulseMobile {
   0%, 100% { transform: translateY(0); opacity: 0.5; }
-  50% { transform: translateY(10px); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.9; }
+}
+@keyframes scrollArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }
 
 /* --- Buttons --- */
@@ -603,8 +640,11 @@ body {
 }
 .testimonial-slide {
   min-width: 100%;
+  width: 100%;
   flex-shrink: 0;
   padding: 0 4px;
+  box-sizing: border-box;
+  min-height: 0;
 }
 .testimonial-card {
   margin: 0;
@@ -614,6 +654,11 @@ body {
   border-radius: var(--radius);
   transition: border-color 0.3s var(--ease);
   height: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .testimonial-card:hover {
   border-color: rgba(0, 0, 0, 0.15);
@@ -625,6 +670,9 @@ body {
   margin: 0 0 20px 0;
   position: relative;
   padding-left: 28px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .testimonial-quote::before {
   content: '"';
@@ -735,9 +783,12 @@ body {
   .testimonial-card {
     padding: 24px 20px;
     min-height: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   .testimonial-quote {
-    font-size: 1.05rem;
+    font-size: 1.0625rem;
     line-height: 1.7;
     margin-bottom: 18px;
     padding-left: 24px;
@@ -750,10 +801,10 @@ body {
     font-size: 0.9rem;
   }
   .testimonial-author {
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
   }
   .testimonial-context {
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
   }
   .testimonials-nav {
     margin-top: 20px;
@@ -784,6 +835,16 @@ body {
   .testimonial-quote::before {
     font-size: 2.2rem;
   }
+}
+
+/* Tekst w sliderze nie może wychodzić; ostry font na urządzeniach z transform */
+.testimonials-track-wrap {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.testimonial-card {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* --- Cookie bar --- */
