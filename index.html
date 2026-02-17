@@ -23,25 +23,12 @@
         <button type="button" class="accent-option" data-accent="black" aria-pressed="true">Czarny</button>
         <button type="button" class="accent-option" data-accent="mint" aria-pressed="false">Miętowy</button>
       </div>
-      <ul class="nav-links">
-        <li><a href="#uslugi">Usługi</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#opinie">Opinie</a></li>
-        <li><a href="#rejestracja">Rejestracja</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
+      <ul id="nav-links" class="nav-links"><!-- wypełniane z config.json --></ul>
     </div>
     <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
-  <nav class="dots" aria-hidden="true">
-    <a href="#" class="dot active" data-section="hero" aria-label="Hero"></a>
-    <a href="#uslugi" class="dot" data-section="uslugi" aria-label="Usługi"></a>
-    <a href="#galeria" class="dot" data-section="galeria" aria-label="Galeria"></a>
-    <a href="#opinie" class="dot" data-section="opinie" aria-label="Opinie"></a>
-    <a href="#rejestracja" class="dot" data-section="rejestracja" aria-label="Rejestracja"></a>
-    <a href="#kontakt" class="dot" data-section="kontakt" aria-label="Kontakt"></a>
-  </nav>
+  <nav id="dots" class="dots" aria-hidden="true"><!-- wypełniane z config.json --></nav>
 
   <main id="main" class="onepage">
     <section id="hero" class="panel hero">
@@ -101,18 +88,7 @@
         <p class="label">Zapisz się</p>
         <h2 class="title">Rejestracja</h2>
         <p class="intro">Wybierz formę i wypełnij formularz. Odpowiem najszybciej jak to możliwe.</p>
-        <div class="forms-grid">
-          <a href="https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_1" target="_blank" rel="noopener noreferrer" class="form-card">
-            <span class="form-card-title">Konsultacja behawioralna</span>
-            <span class="form-card-desc">Umów pierwszą konsultację</span>
-            <span class="form-card-arrow">→</span>
-          </a>
-          <a href="https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_2" target="_blank" rel="noopener noreferrer" class="form-card">
-            <span class="form-card-title">Warsztaty / szkolenia</span>
-            <span class="form-card-desc">Zapisz się na warsztat grupowy</span>
-            <span class="form-card-arrow">→</span>
-          </a>
-        </div>
+        <div id="forms-container" class="forms-grid"><!-- wypełniane z config.json --></div>
       </div>
     </section>
 
@@ -121,251 +97,233 @@
         <p class="label">Bądźmy w kontakcie</p>
         <h2 class="title">Social media</h2>
         <p class="intro">Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś.</p>
-        <div class="socials">
-          <a href="https://www.instagram.com/TWOJ_INSTAGRAM/" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            <span>Instagram</span>
-          </a>
-          <a href="https://www.facebook.com/TWOJ_FACEBOOK/" target="_blank" rel="noopener noreferrer" class="social" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            <span>Facebook</span>
-          </a>
-        </div>
+        <div id="socials-container" class="socials"><!-- wypełniane z config.json --></div>
       </div>
     </section>
   </main>
 
-  <div id="google-maps-hidden" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
-
   <footer class="footer">
     <div class="footer-inner wrap">
       <p class="footer-copy">© <span id="year"></span> perra the dog</p>
-      <p class="footer-contact">
-        <a href="mailto:TWOJ_EMAIL">TWOJ_EMAIL</a>
-        <span class="footer-sep">·</span>
-        <a href="tel:+48TWOJ_TELEFON">+48 TWOJ_TELEFON</a>
-      </p>
+      <p id="footer-contact" class="footer-contact"><!-- wypełniane z config.json --></p>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Akcent: przełącznik biały / różowy + zapis w localStorage
-    const ACCENT_KEY = 'perra-accent';
-    const container = document.getElementById('services-grid');
-    const jsonUrl = (container && container.getAttribute('data-json')) || 'services.json';
-
+    var ACCENT_KEY = 'perra-accent';
     function getAccent() {
       try { return localStorage.getItem(ACCENT_KEY) || 'black'; } catch (e) { return 'black'; }
     }
     function setAccent(value) {
       try { localStorage.setItem(ACCENT_KEY, value); } catch (e) {}
       document.body.classList.toggle('accent-mint', value === 'mint');
-      document.querySelectorAll('.accent-option').forEach(btn => {
-        const isActive = btn.getAttribute('data-accent') === value;
+      document.querySelectorAll('.accent-option').forEach(function(btn) {
+        var isActive = btn.getAttribute('data-accent') === value;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-pressed', isActive);
       });
     }
-
-    const savedAccent = getAccent();
-    document.body.classList.toggle('accent-mint', savedAccent === 'mint');
-
-    document.querySelectorAll('.accent-option').forEach(btn => {
-      const isActive = btn.getAttribute('data-accent') === savedAccent;
-      btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-pressed', isActive);
-      btn.addEventListener('click', () => setAccent(btn.getAttribute('data-accent')));
+    document.body.classList.toggle('accent-mint', getAccent() === 'mint');
+    document.querySelectorAll('.accent-option').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-accent') === getAccent());
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-accent') === getAccent());
+      btn.addEventListener('click', function() { setAccent(btn.getAttribute('data-accent')); });
     });
 
-    // Usługi: z pliku JSON (gdy strona na http/https) lub wbudowana kopia (gdy file://)
-    var DEFAULT_SERVICES = [
-      { num: "01", title: "Konsultacja behawioralna", description: "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy." },
-      { num: "02", title: "Wizyty w domu", description: "Lęk separacyjny, zachowania w domu, socjalizacja — w naturalnym środowisku psa." },
-      { num: "03", title: "Spacery treningowe", description: "Reaktywność, praca na smyczy, spokojne spacery i współpraca na zewnątrz." },
-      { num: "04", title: "", description: "" }
-    ];
+    var DEFAULT_CONFIG = {
+      sections: [
+        { id: 'hero', visible: true, order: 0, label: 'Start' },
+        { id: 'uslugi', visible: true, order: 1, label: 'Usługi' },
+        { id: 'galeria', visible: true, order: 2, label: 'Galeria' },
+        { id: 'opinie', visible: true, order: 3, label: 'Opinie' },
+        { id: 'rejestracja', visible: true, order: 4, label: 'Rejestracja' },
+        { id: 'kontakt', visible: true, order: 5, label: 'Kontakt' }
+      ],
+      forms: [
+        { title: 'Konsultacja behawioralna', description: 'Umów pierwszą konsultację', url: '#' },
+        { title: 'Warsztaty / szkolenia', description: 'Zapisz się na warsztat grupowy', url: '#' }
+      ],
+      socials: [
+        { name: 'Instagram', url: '#', icon: 'instagram' },
+        { name: 'Facebook', url: '#', icon: 'facebook' }
+      ],
+      footer: { email: 'email@example.pl', phoneHref: '+48123456789', phoneDisplay: '+48 123 456 789' }
+    };
 
-    function renderService(item, index) {
-      var num = item.num != null ? String(item.num) : String(index + 1).padStart(2, '0');
-      var title = item.title || '';
-      var desc = item.description || item.desc || '';
-      var card = document.createElement('article');
-      card.className = 'card';
-      card.innerHTML = '<span class="card-num">' + num + '</span><h3>' + escapeHtml(title) + '</h3><p>' + escapeHtml(desc) + '</p>';
-      return card;
-    }
     function escapeHtml(text) {
       var div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
     }
-    function renderServicesList(list) {
-      if (!container) return;
-      container.innerHTML = '';
-      list.forEach(function(item, i) { container.appendChild(renderService(item, i)); });
+
+    function applyConfig(cfg) {
+      var sections = (cfg.sections || []).filter(function(s) { return s.visible !== false; }).sort(function(a, b) { return (a.order || 0) - (b.order || 0); });
+      var main = document.getElementById('main');
+      if (main) {
+        var panels = [].slice.call(main.querySelectorAll('.panel'));
+        var byId = {};
+        panels.forEach(function(p) { byId[p.id] = p; });
+        sections.forEach(function(s) {
+          var el = byId[s.id];
+          if (el) { el.style.display = ''; main.appendChild(el); }
+        });
+        panels.forEach(function(p) {
+          if (sections.every(function(s) { return s.id !== p.id; })) p.style.display = 'none';
+        });
+      }
+
+      var navLinks = document.getElementById('nav-links');
+      if (navLinks) {
+        navLinks.innerHTML = '';
+        sections.forEach(function(s) {
+          if (s.id === 'hero') return;
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = '#' + s.id;
+          a.textContent = s.label || s.id;
+          li.appendChild(a);
+          navLinks.appendChild(li);
+        });
+      }
+
+      var dotsNav = document.getElementById('dots');
+      if (dotsNav) {
+        dotsNav.innerHTML = '';
+        sections.forEach(function(s, i) {
+          var a = document.createElement('a');
+          a.href = s.id === 'hero' ? '#' : '#' + s.id;
+          a.className = 'dot' + (i === 0 ? ' active' : '');
+          a.setAttribute('data-section', s.id);
+          a.setAttribute('aria-label', s.label || s.id);
+          dotsNav.appendChild(a);
+        });
+      }
+
+      var formsContainer = document.getElementById('forms-container');
+      if (formsContainer && cfg.forms && cfg.forms.length) {
+        formsContainer.innerHTML = '';
+        cfg.forms.forEach(function(f) {
+          var card = document.createElement('a');
+          card.href = f.url || '#';
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+          card.className = 'form-card';
+          card.innerHTML = '<span class="form-card-title">' + escapeHtml(f.title || '') + '</span><span class="form-card-desc">' + escapeHtml(f.description || '') + '</span><span class="form-card-arrow">→</span>';
+          formsContainer.appendChild(card);
+        });
+      }
+
+      var socialsContainer = document.getElementById('socials-container');
+      if (socialsContainer && cfg.socials && cfg.socials.length) {
+        var igPath = "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z";
+        var fbPath = "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z";
+        socialsContainer.innerHTML = '';
+        cfg.socials.forEach(function(s) {
+          var a = document.createElement('a');
+          a.href = s.url || '#';
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'social';
+          a.setAttribute('aria-label', s.name || '');
+          a.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="' + (s.icon === 'instagram' ? igPath : fbPath) + '"/></svg><span>' + escapeHtml(s.name || '') + '</span>';
+          socialsContainer.appendChild(a);
+        });
+      }
+
+      var footerContact = document.getElementById('footer-contact');
+      if (footerContact && cfg.footer) {
+        var f = cfg.footer;
+        var parts = [];
+        if (f.email) parts.push('<a href="mailto:' + escapeHtml(f.email) + '">' + escapeHtml(f.email) + '</a>');
+        if (f.phoneHref || f.phoneDisplay) parts.push('<a href="tel:' + escapeHtml((f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '')) + '">' + escapeHtml(f.phoneDisplay || f.phoneHref || '') + '</a>');
+        footerContact.innerHTML = parts.join('<span class="footer-sep">·</span>');
+      }
     }
 
-    if (container) {
-      fetch(jsonUrl)
-        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function(data) {
-          var list = Array.isArray(data) ? data : (data.services || data.items || []);
-          renderServicesList(list.length ? list : DEFAULT_SERVICES);
-        })
-        .catch(function() {
-          renderServicesList(DEFAULT_SERVICES);
-        });
-    }
-
-    // Galeria: z gallery.json lub zdjęcia zastępcze (działają przy file://)
-    var galleryEl = document.getElementById('gallery-grid');
-    var galleryJsonUrl = (galleryEl && galleryEl.getAttribute('data-json')) || 'gallery.json';
-    var DEFAULT_GALLERY = [
-      { src: 'https://picsum.photos/500/340?random=1', alt: 'Zdjęcie 1' },
-      { src: 'https://picsum.photos/500/340?random=2', alt: 'Zdjęcie 2' },
-      { src: 'https://picsum.photos/500/340?random=3', alt: 'Zdjęcie 3' },
-      { src: 'https://picsum.photos/500/340?random=4', alt: 'Zdjęcie 4' },
-      { src: 'https://picsum.photos/500/340?random=5', alt: 'Zdjęcie 5' },
-      { src: 'https://picsum.photos/500/340?random=6', alt: 'Zdjęcie 6' }
-    ];
-    function renderPhoto(item) {
-      var src = typeof item === 'string' ? item : (item.src || '');
-      var alt = (typeof item === 'object' && item && item.alt) ? item.alt : '';
-      var box = document.createElement('div');
-      box.className = 'photo-box';
-      var img = document.createElement('img');
-      img.src = src;
-      img.alt = alt;
-      img.loading = 'lazy';
-      img.onerror = function() { this.style.display = 'none'; this.parentElement.classList.add('photo-box--error'); };
-      box.appendChild(img);
-      if (alt) {
-        var cap = document.createElement('span');
-        cap.className = 'photo-box-caption';
-        cap.textContent = alt;
-        box.appendChild(cap);
-      }
-      return box;
-    }
-    function renderGalleryList(list) {
-      if (!galleryEl) return;
-      galleryEl.innerHTML = '';
-      list.forEach(function(item) { galleryEl.appendChild(renderPhoto(item)); });
-    }
-    if (galleryEl) {
-      fetch(galleryJsonUrl)
-        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function(data) {
-          var list = Array.isArray(data) ? data : (data.images || data.photos || data.items || []);
-          renderGalleryList(list.length ? list : DEFAULT_GALLERY);
-        })
-        .catch(function() {
-          renderGalleryList(DEFAULT_GALLERY);
-        });
-    }
-
-    // Testimoniale: z Google (Maps/Place) lub z testimonials.json
-    var testimonialsEl = document.getElementById('testimonials-grid');
-    var testimonialsJsonUrl = (testimonialsEl && testimonialsEl.getAttribute('data-json')) || 'testimonials.json';
-    // Aby pobierać opinie z Google: wstaw Place ID i klucz API (Maps JavaScript API + Places),
-    // potem odkomentuj i uzupełnij. Place ID znajdziesz w Google Maps (profil firmy) lub Place ID Finder.
-    var GOOGLE_REVIEWS_CONFIG = {
-      placeId: '',  // np. 'ChIJ...' z Google Maps
-      apiKey: ''    // klucz z Google Cloud (Maps JavaScript API, ogranicz do domeny)
-    };
-    var DEFAULT_TESTIMONIALS = [
-      { quote: 'Po kilku spotkaniach nasz pies w końcu przestał ciągnąć na smyczy. Cierpliwość i konkretne wskazówki — polecam.', author: 'Anna K.', context: 'opieka nad Borysem, border collie' },
-      { quote: 'Profesjonalnie, bez oceniania. Dostałyśmy plan działania i realne narzędzia. Relacja z psem naprawdę się zmieniła.', author: 'Magda i Ola', context: 'konsultacja + spacery treningowe' },
-      { quote: 'Warsztat otworzył mi oczy na to, jak mój pies odbiera świat. Teraz spacerujemy spokojniej — i ja, i Luna.', author: 'Tomek', context: 'uczestnik warsztatów' }
-    ];
-    function renderTestimonial(item) {
-      var quote = (item && item.quote) ? item.quote : '';
-      var author = (item && item.author) ? item.author : '';
-      var context = (item && item.context) ? item.context : '';
-      var card = document.createElement('blockquote');
-      card.className = 'testimonial-card';
-      var q = document.createElement('p');
-      q.className = 'testimonial-quote';
-      q.textContent = quote;
-      card.appendChild(q);
-      var meta = document.createElement('footer');
-      meta.className = 'testimonial-meta';
-      var nameSpan = document.createElement('strong');
-      nameSpan.className = 'testimonial-author';
-      nameSpan.textContent = author;
-      meta.appendChild(nameSpan);
-      if (context) {
-        var ctxSpan = document.createElement('span');
-        ctxSpan.className = 'testimonial-context';
-        ctxSpan.textContent = context;
-        meta.appendChild(ctxSpan);
-      }
-      card.appendChild(meta);
-      return card;
-    }
-    function renderTestimonialsList(list) {
-      if (!testimonialsEl) return;
-      testimonialsEl.innerHTML = '';
-      list.forEach(function(item) { testimonialsEl.appendChild(renderTestimonial(item)); });
-    }
-    function loadTestimonialsFromGoogle() {
-      if (!window.google || !window.google.maps || !window.google.maps.places) {
-        fallbackTestimonials();
-        return;
-      }
-      var mapEl = document.getElementById('google-maps-hidden');
-      if (!mapEl) { fallbackTestimonials(); return; }
-      var map = new google.maps.Map(mapEl, { center: { lat: 0, lng: 0 }, zoom: 1, disableDefaultUI: true });
-      var service = new google.maps.places.PlacesService(map);
-      service.getDetails({ placeId: GOOGLE_REVIEWS_CONFIG.placeId }, function(place, status) {
-        if (status !== google.maps.places.PlacesServiceStatus.OK || !place || !place.reviews || place.reviews.length === 0) {
-          fallbackTestimonials();
-          return;
-        }
-        var list = place.reviews.map(function(r) {
-          var ctx = r.relative_time_description || '';
-          if (r.rating != null) ctx = (ctx ? ctx + ' · ' : '') + r.rating + ' ★';
-          ctx = ctx ? 'Google · ' + ctx : 'Google';
-          return { quote: r.text || '', author: r.author_name || 'Anonim', context: ctx };
-        });
-        renderTestimonialsList(list);
+    fetch('config.json')
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
+      .then(function(cfg) {
+        applyConfig(cfg);
+        loadData();
+      })
+      .catch(function() {
+        applyConfig(DEFAULT_CONFIG);
+        loadData();
       });
-    }
-    function fallbackTestimonials() {
-      fetch(testimonialsJsonUrl)
-        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function(data) {
+
+    function loadData() {
+      var container = document.getElementById('services-grid');
+      var jsonUrl = (container && container.getAttribute('data-json')) || 'services.json';
+      function renderService(item, index) {
+        var num = item.num != null ? String(item.num) : String(index + 1).padStart(2, '0');
+        var card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = '<span class="card-num">' + num + '</span><h3>' + escapeHtml(item.title || '') + '</h3><p>' + escapeHtml(item.description || item.desc || '') + '</p>';
+        return card;
+      }
+      if (container) {
+        fetch(jsonUrl).then(function(r) { return r.ok ? r.json() : Promise.reject(r); }).then(function(data) {
+          var list = Array.isArray(data) ? data : (data.services || data.items || []);
+          container.innerHTML = '';
+          list.forEach(function(item, i) { container.appendChild(renderService(item, i)); });
+        }).catch(function() { container.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik services.json.</p>'; });
+      }
+
+      var galleryEl = document.getElementById('gallery-grid');
+      var galleryJsonUrl = (galleryEl && galleryEl.getAttribute('data-json')) || 'gallery.json';
+      function renderPhoto(item) {
+        var src = typeof item === 'string' ? item : (item.src || '');
+        var alt = (typeof item === 'object' && item && item.alt) ? item.alt : '';
+        var box = document.createElement('div');
+        box.className = 'photo-box';
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.loading = 'lazy';
+        img.onerror = function() { this.style.display = 'none'; this.parentElement.classList.add('photo-box--error'); };
+        box.appendChild(img);
+        if (alt) { var cap = document.createElement('span'); cap.className = 'photo-box-caption'; cap.textContent = alt; box.appendChild(cap); }
+        return box;
+      }
+      if (galleryEl) {
+        fetch(galleryJsonUrl).then(function(r) { return r.ok ? r.json() : Promise.reject(r); }).then(function(data) {
+          var list = Array.isArray(data) ? data : (data.images || data.photos || data.items || []);
+          galleryEl.innerHTML = '';
+          list.forEach(function(item) { galleryEl.appendChild(renderPhoto(item)); });
+        }).catch(function() { galleryEl.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik gallery.json.</p>'; });
+      }
+
+      var testimonialsEl = document.getElementById('testimonials-grid');
+      var testimonialsJsonUrl = (testimonialsEl && testimonialsEl.getAttribute('data-json')) || 'testimonials.json';
+      function renderTestimonial(item) {
+        var card = document.createElement('blockquote');
+        card.className = 'testimonial-card';
+        card.innerHTML = '<p class="testimonial-quote">' + escapeHtml(item.quote || '') + '</p><footer class="testimonial-meta"><strong class="testimonial-author">' + escapeHtml(item.author || '') + '</strong>' + (item.context ? '<span class="testimonial-context">' + escapeHtml(item.context) + '</span>' : '') + '</footer>';
+        return card;
+      }
+      if (testimonialsEl) {
+        fetch(testimonialsJsonUrl).then(function(r) { return r.ok ? r.json() : Promise.reject(r); }).then(function(data) {
           var list = Array.isArray(data) ? data : (data.testimonials || data.items || []);
-          renderTestimonialsList(list.length ? list : DEFAULT_TESTIMONIALS);
-        })
-        .catch(function() { renderTestimonialsList(DEFAULT_TESTIMONIALS); });
-    }
-    if (testimonialsEl) {
-      if (GOOGLE_REVIEWS_CONFIG.placeId && GOOGLE_REVIEWS_CONFIG.apiKey) {
-        var script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(GOOGLE_REVIEWS_CONFIG.apiKey) + '&libraries=places&callback=window.__perraGoogleReviewsInit';
-        script.async = true;
-        script.defer = true;
-        window.__perraGoogleReviewsInit = function() { loadTestimonialsFromGoogle(); };
-        script.onerror = fallbackTestimonials;
-        document.head.appendChild(script);
-      } else {
-        fallbackTestimonials();
+          testimonialsEl.innerHTML = '';
+          list.forEach(function(item) { testimonialsEl.appendChild(renderTestimonial(item)); });
+        }).catch(function() { testimonialsEl.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik testimonials.json.</p>'; });
       }
     }
 
     document.querySelector('.nav-toggle').addEventListener('click', function() {
-      const right = document.querySelector('.nav-right');
-      right?.classList.toggle('open');
+      var right = document.querySelector('.nav-right');
+      if (right) right.classList.toggle('open');
       this.classList.toggle('open');
     });
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.querySelector('.nav-right')?.classList.remove('open');
-        document.querySelector('.nav-toggle')?.classList.remove('open');
-      });
+    document.getElementById('nav-links').addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        var right = document.querySelector('.nav-right');
+        var toggle = document.querySelector('.nav-toggle');
+        if (right) right.classList.remove('open');
+        if (toggle) toggle.classList.remove('open');
+      }
     });
 
     var dots = document.querySelectorAll('.dot');
@@ -397,9 +355,9 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('load', updateDots);
 
-    document.querySelectorAll('.panel').forEach(panel => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    document.querySelectorAll('.panel').forEach(function(panel) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
       }, { threshold: 0.15 });
       observer.observe(panel);
     });
