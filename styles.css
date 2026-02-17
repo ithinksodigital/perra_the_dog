@@ -357,8 +357,20 @@ body {
   transform: translateY(-2px);
 }
 
-/* --- Section blocks --- */
-.section.dark { background: var(--surface); }
+/* --- Section blocks: wszędzie jasne tło, rozróżnienie delikatnym akcentem --- */
+.section {
+  position: relative;
+  background: var(--bg);
+}
+.section-tint::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 60% at 50% 35%, var(--accent-dim) 0%, transparent 65%);
+  opacity: 1;
+}
+.section-tint .wrap { position: relative; z-index: 1; }
 .label {
   font-family: var(--font-heading);
   font-size: 0.75rem;
