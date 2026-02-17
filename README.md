@@ -29,6 +29,11 @@ W pliku **index.html** znajdź i zamień:
 3. **Google Forms** — szukaj: `TWOJ_LINK_GOOGLE_FORMS_1` i `TWOJ_LINK_GOOGLE_FORMS_2`  
    Wklej linki do formularzy z Google Forms (np. dla konsultacji i dla warsztatów).
 
+4. **Kontakt w stopce** — w **index.html** zamień:
+   - `TWOJ_EMAIL` (w dwóch miejscach: w `href="mailto:..."` i w tekście linku) na swój adres e-mail,
+   - `+48TWOJ_TELEFON` w `href="tel:..."` na numer z kierunkowym, np. `+48123456789` (same cyfry),
+   - `+48 TWOJ_TELEFON` w tekście na wyświetlaną formę, np. `+48 123 456 789`.
+
 Po wklejeniu linków zapisz plik i odśwież stronę.
 
 ## Przełącznik koloru akcentu
@@ -100,3 +105,21 @@ Przykład **testimonials.json**:
 ```
 
 Jeśli plik nie załaduje się (np. przy file://), wyświetlą się wbudowane przykładowe opinie.
+
+---
+
+## Co zostało poprawione / dodane (analiza kodu)
+
+- **SEO**: meta description, Open Graph (og:title, og:description, og:type) — lepsze podglądy w Google i przy udostępnianiu linku.
+- **Favicon**: tymczasowa ikona (emoji 🐕) w SVG; możesz ją zastąpić plikiem `favicon.ico` w głównym folderze i zmienić `<link rel="icon">` w `index.html`.
+- **Dostępność**: link „Przejdź do treści” (widoczny po Tab na początku strony), wyraźne obrysy `:focus-visible` dla linków i przycisków (nawigacja klawiaturą).
+- **Redukcja ruchu**: przy ustawieniu systemowym „reduce motion” animacje są ograniczone (m.in. sekcje, scroll hint).
+- **Wydajność**: obsługa scrollu przy kropkach nawigacji używa `requestAnimationFrame`, żeby nie blokować przewijania.
+
+## Co można jeszcze dodać (pomysły)
+
+- **Sekcja „O mnie”** — zdjęcie + krótki bio, np. ładowane z `about.json` lub na stałe w HTML.
+- **Kontakt w stopce** — e-mail lub telefon (np. w config/JSON albo na stałe w `index.html`).
+- **Formularze z JSON** — linki do Google Forms w pliku `forms.json`, tak jak usługi i galeria.
+- **Własny favicon** — zamiana emoji na plik `favicon.ico` lub PNG (np. 32×32).
+- **Canonical URL** — po wrzuceniu na domenę: `<link rel="canonical" href="https://twoja-domena.pl">` w `<head>`.

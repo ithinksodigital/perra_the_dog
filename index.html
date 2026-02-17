@@ -4,12 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perra the Dog | Behawiorystka psów</title>
+  <meta name="description" content="Behawiorystka psów — konsultacje, wizyty w domu, spacery treningowe i warsztaty. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.">
+  <meta property="og:title" content="Perra the Dog | Behawiorystka psów">
+  <meta property="og:description" content="Konsultacje behawioralne, wizyty w domu, spacery treningowe i warsztaty. Pomagam budować spokojną więź z psem.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='0.9em' font-size='24'>🐕</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a href="#main" class="skip-link">Przejdź do treści</a>
   <nav class="nav">
     <a href="#" class="logo">Perra<span> the Dog</span></a>
     <div class="nav-right">
@@ -37,7 +43,7 @@
     <a href="#kontakt" class="dot" data-section="kontakt" aria-label="Kontakt"></a>
   </nav>
 
-  <main class="onepage">
+  <main id="main" class="onepage">
     <section id="hero" class="panel hero">
       <div class="hero-bg">
         <div class="hero-gradient"></div>
@@ -130,7 +136,14 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Perra the Dog</p>
+    <div class="footer-inner wrap">
+      <p class="footer-copy">© <span id="year"></span> Perra the Dog</p>
+      <p class="footer-contact">
+        <a href="mailto:TWOJ_EMAIL">TWOJ_EMAIL</a>
+        <span class="footer-sep">·</span>
+        <a href="tel:+48TWOJ_TELEFON">+48 TWOJ_TELEFON</a>
+      </p>
+    </div>
   </footer>
 
   <script>
@@ -169,7 +182,7 @@
       { num: "01", title: "Konsultacja behawioralna", description: "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy." },
       { num: "02", title: "Wizyty w domu", description: "Lęk separacyjny, zachowania w domu, socjalizacja — w naturalnym środowisku psa." },
       { num: "03", title: "Spacery treningowe", description: "Reaktywność, praca na smyczy, spokojne spacery i współpraca na zewnątrz." },
-      { num: "04", title: "Warsztaty i szkolenia", description: "Grupy, webinary i warsztaty dla opiekunów — wiedza i praktyka." }
+      { num: "04", title: "", description: "" }
     ];
 
     function renderService(item, index) {
@@ -313,22 +326,33 @@
       });
     });
 
-    const dots = document.querySelectorAll('.dot');
-    const panels = document.querySelectorAll('.panel');
+    var dots = document.querySelectorAll('.dot');
+    var panels = document.querySelectorAll('.panel');
 
     function updateDots() {
-      const vh = window.innerHeight;
-      const scroll = window.scrollY;
-      let current = 'hero';
-      panels.forEach(p => {
-        const top = p.offsetTop;
+      var vh = window.innerHeight;
+      var scroll = window.scrollY;
+      var current = 'hero';
+      panels.forEach(function(p) {
+        var top = p.offsetTop;
         if (scroll >= top - vh * 0.4) current = p.id || current;
       });
-      dots.forEach(d => {
-        d.classList.toggle('active', d.getAttribute('href') === '#' ? current === 'hero' : d.getAttribute('href').slice(1) === current);
+      dots.forEach(function(d) {
+        var href = d.getAttribute('href');
+        var isActive = href === '#' ? current === 'hero' : href.slice(1) === current;
+        d.classList.toggle('active', isActive);
       });
     }
-    window.addEventListener('scroll', updateDots);
+    var scrollTick = false;
+    function onScroll() {
+      if (scrollTick) return;
+      scrollTick = true;
+      requestAnimationFrame(function() {
+        updateDots();
+        scrollTick = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('load', updateDots);
 
     document.querySelectorAll('.panel').forEach(panel => {

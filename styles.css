@@ -25,6 +25,38 @@ body.accent-pink {
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 24px;
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus {
+  top: 24px;
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+.accent-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.dots .dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -201,6 +233,10 @@ body {
 .panel.in {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel { transition: opacity 0.4s ease; }
+  .scroll-line { animation: none; opacity: 0.7; }
 }
 
 /* --- Hero --- */
@@ -587,12 +623,38 @@ body {
 
 /* --- Footer --- */
 .footer {
-  padding: 28px 32px;
+  padding: 28px 24px;
   border-top: 1px solid var(--border);
   text-align: center;
 }
-.footer p {
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.footer-copy,
+.footer-contact {
   margin: 0;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+.footer-contact a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+.footer-contact a:hover {
+  color: var(--accent);
+}
+.footer-sep {
+  margin: 0 8px;
+  opacity: 0.6;
+}
+@media (min-width: 500px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
 }
