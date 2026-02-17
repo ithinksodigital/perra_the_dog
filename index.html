@@ -241,6 +241,7 @@
         if (f.phoneHref || f.phoneDisplay) parts.push('<a href="tel:' + escapeHtml((f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '')) + '">' + escapeHtml(f.phoneDisplay || f.phoneHref || '') + '</a>');
         footerContact.innerHTML = parts.join('<span class="footer-sep">·</span>');
       }
+      updateDots();
     }
 
     fetch('config.json')
@@ -327,10 +328,10 @@
       }
     });
 
-    var dots = document.querySelectorAll('.dot');
-    var panels = document.querySelectorAll('.panel');
-
     function updateDots() {
+      var panels = document.querySelectorAll('.panel');
+      var dots = document.querySelectorAll('.dot');
+      if (!panels.length || !dots.length) return;
       var vh = window.innerHeight;
       var scroll = window.scrollY;
       var current = 'hero';
