@@ -91,7 +91,7 @@
         <h2 class="title">Opinie</h2>
         <p class="intro">Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów.</p>
         <div id="testimonials-grid" class="testimonials-grid" data-json="testimonials.json">
-          <!-- Testimoniale ładowane z testimonials.json -->
+          <!-- Testimoniale: z Google (gdy ustawione w skrypcie) lub z testimonials.json -->
         </div>
       </div>
     </section>
@@ -134,6 +134,8 @@
       </div>
     </section>
   </main>
+
+  <div id="google-maps-hidden" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
 
   <footer class="footer">
     <div class="footer-inner wrap">
@@ -264,9 +266,15 @@
         });
     }
 
-    // Testimoniale: z testimonials.json lub wbudowane
+    // Testimoniale: z Google (Maps/Place) lub z testimonials.json
     var testimonialsEl = document.getElementById('testimonials-grid');
     var testimonialsJsonUrl = (testimonialsEl && testimonialsEl.getAttribute('data-json')) || 'testimonials.json';
+    // Aby pobierać opinie z Google: wstaw Place ID i klucz API (Maps JavaScript API + Places),
+    // potem odkomentuj i uzupełnij. Place ID znajdziesz w Google Maps (profil firmy) lub Place ID Finder.
+    var GOOGLE_REVIEWS_CONFIG = {
+      placeId: '',  // np. 'ChIJ...' z Google Maps
+      apiKey: ''    // klucz z Google Cloud (Maps JavaScript API, ogranicz do domeny)
+    };
     var DEFAULT_TESTIMONIALS = [
       { quote: 'Po kilku spotkaniach nasz pies w końcu przestał ciągnąć na smyczy. Cierpliwość i konkretne wskazówki — polecam.', author: 'Anna K.', context: 'opieka nad Borysem, border collie' },
       { quote: 'Profesjonalnie, bez oceniania. Dostałyśmy plan działania i realne narzędzia. Relacja z psem naprawdę się zmieniła.', author: 'Magda i Ola', context: 'konsultacja + spacery treningowe' },
@@ -302,16 +310,50 @@
       testimonialsEl.innerHTML = '';
       list.forEach(function(item) { testimonialsEl.appendChild(renderTestimonial(item)); });
     }
-    if (testimonialsEl) {
+    function loadTestimonialsFromGoogle() {
+      if (!window.google || !window.google.maps || !window.google.maps.places) {
+        fallbackTestimonials();
+        return;
+      }
+      var mapEl = document.getElementById('google-maps-hidden');
+      if (!mapEl) { fallbackTestimonials(); return; }
+      var map = new google.maps.Map(mapEl, { center: { lat: 0, lng: 0 }, zoom: 1, disableDefaultUI: true });
+      var service = new google.maps.places.PlacesService(map);
+      service.getDetails({ placeId: GOOGLE_REVIEWS_CONFIG.placeId }, function(place, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK || !place || !place.reviews || place.reviews.length === 0) {
+          fallbackTestimonials();
+          return;
+        }
+        var list = place.reviews.map(function(r) {
+          var ctx = r.relative_time_description || '';
+          if (r.rating != null) ctx = (ctx ? ctx + ' · ' : '') + r.rating + ' ★';
+          ctx = ctx ? 'Google · ' + ctx : 'Google';
+          return { quote: r.text || '', author: r.author_name || 'Anonim', context: ctx };
+        });
+        renderTestimonialsList(list);
+      });
+    }
+    function fallbackTestimonials() {
       fetch(testimonialsJsonUrl)
         .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function(data) {
           var list = Array.isArray(data) ? data : (data.testimonials || data.items || []);
           renderTestimonialsList(list.length ? list : DEFAULT_TESTIMONIALS);
         })
-        .catch(function() {
-          renderTestimonialsList(DEFAULT_TESTIMONIALS);
-        });
+        .catch(function() { renderTestimonialsList(DEFAULT_TESTIMONIALS); });
+    }
+    if (testimonialsEl) {
+      if (GOOGLE_REVIEWS_CONFIG.placeId && GOOGLE_REVIEWS_CONFIG.apiKey) {
+        var script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(GOOGLE_REVIEWS_CONFIG.apiKey) + '&libraries=places&callback=window.__perraGoogleReviewsInit';
+        script.async = true;
+        script.defer = true;
+        window.__perraGoogleReviewsInit = function() { loadTestimonialsFromGoogle(); };
+        script.onerror = fallbackTestimonials;
+        document.head.appendChild(script);
+      } else {
+        fallbackTestimonials();
+      }
     }
 
     document.querySelector('.nav-toggle').addEventListener('click', function() {

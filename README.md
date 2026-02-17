@@ -106,6 +106,25 @@ Przykład **testimonials.json**:
 
 Jeśli plik nie załaduje się (np. przy file://), wyświetlą się wbudowane przykładowe opinie.
 
+### Opinie z Google (Maps / profil firmy)
+
+Możesz pobierać recenzje z **Google Maps** (profil firmy „perra the dog” / Google Business). W **index.html** w skrypcie znajdziesz obiekt `GOOGLE_REVIEWS_CONFIG`:
+
+```javascript
+var GOOGLE_REVIEWS_CONFIG = {
+  placeId: '',  // Place ID Twojej firmy z Google Maps
+  apiKey: ''    // Klucz API z Google Cloud Console
+};
+```
+
+**Kroki:**
+
+1. **Place ID** — otwórz swoją firmę w [Google Maps](https://www.google.com/maps), skopiuj link. Place ID to ciąg znaków typu `ChIJ...` (można go wyciągnąć z URL lub użyć [Place ID Finder](https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder)).
+2. **Klucz API** — w [Google Cloud Console](https://console.cloud.google.com/) włącz **Maps JavaScript API** i **Places API**, utwórz klucz API i **ogranicz go** (np. do swojej domeny), żeby nie był nadużywany.
+3. Wklej `placeId` i `apiKey` do `GOOGLE_REVIEWS_CONFIG` w `index.html`.
+
+Jeśli którekolwiek z pól jest puste albo wystąpi błąd (np. brak klucza), sekcja Opinie korzysta z **testimonials.json** lub wbudowanych przykładowych opinii.
+
 ---
 
 ## Co zostało poprawione / dodane (analiza kodu)
