@@ -110,6 +110,8 @@
     </div>
   </footer>
 
+  <a href="#" id="back-to-top" class="back-to-top" aria-label="Przewiń do góry">↑</a>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -356,6 +358,19 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('load', updateDots);
+
+    var backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+      function toggleBackToTop() {
+        backToTop.classList.toggle('visible', window.scrollY > 400);
+      }
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+      window.addEventListener('load', toggleBackToTop);
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
 
     document.querySelectorAll('.panel').forEach(function(panel) {
       var observer = new IntersectionObserver(function(entries) {
