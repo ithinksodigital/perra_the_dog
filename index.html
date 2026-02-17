@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perra the Dog | Behawiorystka psów</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="#" class="logo">Perra<span> the Dog</span></a>
+    <div class="nav-right">
+      <div class="accent-toggle" role="group" aria-label="Kolor akcentu">
+        <button type="button" class="accent-option" data-accent="white" aria-pressed="true">Biały</button>
+        <button type="button" class="accent-option" data-accent="pink" aria-pressed="false">Różowy</button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#uslugi">Usługi</a></li>
+        <li><a href="#rejestracja">Rejestracja</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <nav class="dots" aria-hidden="true">
+    <a href="#" class="dot active" data-section="hero" aria-label="Hero"></a>
+    <a href="#uslugi" class="dot" data-section="uslugi" aria-label="Usługi"></a>
+    <a href="#rejestracja" class="dot" data-section="rejestracja" aria-label="Rejestracja"></a>
+    <a href="#kontakt" class="dot" data-section="kontakt" aria-label="Kontakt"></a>
+  </nav>
+
+  <main class="onepage">
+    <section id="hero" class="panel hero">
+      <div class="hero-bg">
+        <div class="hero-gradient"></div>
+        <div class="hero-grid"></div>
+      </div>
+      <div class="hero-inner">
+        <p class="hero-label">Behawiorystka psów</p>
+        <h1 class="hero-title">Zrozum swojego psa.<br>Zbuduj relację.</h1>
+        <p class="hero-desc">Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.</p>
+        <div class="hero-cta">
+          <a href="#rejestracja" class="btn btn-primary">Umów konsultację</a>
+          <a href="#uslugi" class="btn btn-ghost">Usługi</a>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span>Przewiń</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <section id="uslugi" class="panel section">
+      <div class="wrap">
+        <p class="label">Co oferuję</p>
+        <h2 class="title">Usługi</h2>
+        <div id="services-grid" class="services-grid" data-json="services.json">
+          <!-- Karty usług ładowane z services.json -->
+        </div>
+      </div>
+    </section>
+
+    <section id="rejestracja" class="panel section dark">
+      <div class="wrap">
+        <p class="label">Zapisz się</p>
+        <h2 class="title">Rejestracja</h2>
+        <p class="intro">Wybierz formę i wypełnij formularz. Odpowiem najszybciej jak to możliwe.</p>
+        <div class="forms-grid">
+          <a href="https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_1" target="_blank" rel="noopener noreferrer" class="form-card">
+            <span class="form-card-title">Konsultacja behawioralna</span>
+            <span class="form-card-desc">Umów pierwszą konsultację</span>
+            <span class="form-card-arrow">→</span>
+          </a>
+          <a href="https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_2" target="_blank" rel="noopener noreferrer" class="form-card">
+            <span class="form-card-title">Warsztaty / szkolenia</span>
+            <span class="form-card-desc">Zapisz się na warsztat grupowy</span>
+            <span class="form-card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="panel section">
+      <div class="wrap">
+        <p class="label">Bądźmy w kontakcie</p>
+        <h2 class="title">Social media</h2>
+        <p class="intro">Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/TWOJ_INSTAGRAM/" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/TWOJ_FACEBOOK/" target="_blank" rel="noopener noreferrer" class="social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Perra the Dog</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Akcent: przełącznik biały / różowy + zapis w localStorage
+    const ACCENT_KEY = 'perra-accent';
+    const container = document.getElementById('services-grid');
+    const jsonUrl = (container && container.getAttribute('data-json')) || 'services.json';
+
+    function getAccent() {
+      try { return localStorage.getItem(ACCENT_KEY) || 'white'; } catch (e) { return 'white'; }
+    }
+    function setAccent(value) {
+      try { localStorage.setItem(ACCENT_KEY, value); } catch (e) {}
+      document.body.classList.toggle('accent-pink', value === 'pink');
+      document.querySelectorAll('.accent-option').forEach(btn => {
+        const isActive = btn.getAttribute('data-accent') === value;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+    }
+
+    const savedAccent = getAccent();
+    document.body.classList.toggle('accent-pink', savedAccent === 'pink');
+
+    document.querySelectorAll('.accent-option').forEach(btn => {
+      const isActive = btn.getAttribute('data-accent') === savedAccent;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive);
+      btn.addEventListener('click', () => setAccent(btn.getAttribute('data-accent')));
+    });
+
+    // Usługi: z pliku JSON (gdy strona na http/https) lub wbudowana kopia (gdy file://)
+    var DEFAULT_SERVICES = [
+      { num: "01", title: "Konsultacja behawioralna", description: "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy." },
+      { num: "02", title: "Wizyty w domu", description: "Lęk separacyjny, zachowania w domu, socjalizacja — w naturalnym środowisku psa." },
+      { num: "03", title: "Spacery treningowe", description: "Reaktywność, praca na smyczy, spokojne spacery i współpraca na zewnątrz." },
+      { num: "04", title: "Warsztaty i szkolenia", description: "Grupy, webinary i warsztaty dla opiekunów — wiedza i praktyka." }
+    ];
+
+    function renderService(item, index) {
+      var num = item.num != null ? String(item.num) : String(index + 1).padStart(2, '0');
+      var title = item.title || '';
+      var desc = item.description || item.desc || '';
+      var card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = '<span class="card-num">' + num + '</span><h3>' + escapeHtml(title) + '</h3><p>' + escapeHtml(desc) + '</p>';
+      return card;
+    }
+    function escapeHtml(text) {
+      var div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    function renderServicesList(list) {
+      if (!container) return;
+      container.innerHTML = '';
+      list.forEach(function(item, i) { container.appendChild(renderService(item, i)); });
+    }
+
+    if (container) {
+      fetch(jsonUrl)
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(data) {
+          var list = Array.isArray(data) ? data : (data.services || data.items || []);
+          renderServicesList(list.length ? list : DEFAULT_SERVICES);
+        })
+        .catch(function() {
+          renderServicesList(DEFAULT_SERVICES);
+        });
+    }
+
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      const right = document.querySelector('.nav-right');
+      right?.classList.toggle('open');
+      this.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelector('.nav-right')?.classList.remove('open');
+        document.querySelector('.nav-toggle')?.classList.remove('open');
+      });
+    });
+
+    const dots = document.querySelectorAll('.dot');
+    const panels = document.querySelectorAll('.panel');
+
+    function updateDots() {
+      const vh = window.innerHeight;
+      const scroll = window.scrollY;
+      let current = 'hero';
+      panels.forEach(p => {
+        const top = p.offsetTop;
+        if (scroll >= top - vh * 0.4) current = p.id || current;
+      });
+      dots.forEach(d => {
+        d.classList.toggle('active', d.getAttribute('href') === '#' ? current === 'hero' : d.getAttribute('href').slice(1) === current);
+      });
+    }
+    window.addEventListener('scroll', updateDots);
+    window.addEventListener('load', updateDots);
+
+    document.querySelectorAll('.panel').forEach(panel => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.15 });
+      observer.observe(panel);
+    });
+  </script>
+</body>
+</html>

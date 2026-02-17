@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Optional (odkomentuj jeśli dodasz np. node)
+# node_modules/
