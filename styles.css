@@ -977,6 +977,31 @@ body {
   border-color: transparent;
 }
 
+/* --- Sekcja Kontakt (tekst z linkami) --- */
+.contact-info {
+  margin: 0;
+}
+.contact-info-text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.contact-info-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.contact-info-link:hover {
+  border-bottom-color: var(--accent);
+}
+.contact-info-sep {
+  color: var(--text-muted);
+  font-weight: 400;
+  pointer-events: none;
+}
+
 /* --- Minimalna stopka (pojawia się przy scrollu) --- */
 .footer--minimal {
   position: fixed;
@@ -1003,6 +1028,18 @@ body {
   margin: 0;
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+.footer--minimal .footer-contact-info {
+  margin: 4px 0 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.footer--minimal .footer-contact-info .contact-info-link {
+  color: var(--accent);
+}
+.footer--minimal .footer-contact-info .contact-info-sep {
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 .footer {
   padding: 28px 24px;

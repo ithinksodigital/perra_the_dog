@@ -115,7 +115,7 @@
         <p class="label">Kontakt</p>
         <h2 class="title">Kontakt</h2>
         <p class="intro">Lokalizacja, e-mail i telefon.</p>
-        <div id="contact-buttons" class="socials"><!-- Warszawa, email, telefon z config.json --></div>
+        <div id="contact-info" class="contact-info"><!-- Warszawa, email, telefon z config.json --></div>
       </div>
     </section>
   </main>
@@ -123,6 +123,7 @@
   <footer id="minimal-footer" class="footer footer--minimal">
     <div class="footer-inner wrap">
       <p class="footer-copy">© <span id="year"></span> perra the dog</p>
+      <p id="footer-contact-info" class="footer-contact-info"><!-- Warszawa, email, telefon z config.json --></p>
     </div>
   </footer>
 
@@ -256,32 +257,22 @@
         });
       }
 
-      var contactButtons = document.getElementById('contact-buttons');
-      if (contactButtons) {
-        var pinPath = "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z";
-        var mailPath = "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2l8 5 8-5v10H4V6z";
-        var phonePath = "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z";
-        function getIconPath(icon) { if (icon === 'pin') return pinPath; if (icon === 'email') return mailPath; if (icon === 'phone') return phonePath; return pinPath; }
-        function addContact(href, label, icon, targetBlank) {
-          var a = document.createElement('a');
-          a.href = href || '#';
-          if (targetBlank) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
-          a.className = 'social social--contact';
-          a.setAttribute('aria-label', label || '');
-          a.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="' + getIconPath(icon) + '"/></svg><span>' + escapeHtml(label || '') + '</span>';
-          contactButtons.appendChild(a);
-        }
-        var f = cfg.footer || {};
-        if (f.city) {
-          var locHref = (f.mapUrl && f.mapUrl.trim()) ? f.mapUrl : ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(f.city));
-          addContact(locHref, f.city, 'pin', true);
-        }
-        if (f.email) addContact('mailto:' + f.email, f.email, 'email', false);
-        if (f.phoneHref || f.phoneDisplay) {
-          var phoneNum = (f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '');
-          addContact('tel:' + phoneNum, f.phoneDisplay || f.phoneHref || '', 'phone', false);
-        }
+      var f = cfg.footer || {};
+      var contactParts = [];
+      if (f.city) {
+        var locHref = (f.mapUrl && f.mapUrl.trim()) ? f.mapUrl : ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(f.city));
+        contactParts.push('<a href="' + locHref + '" target="_blank" rel="noopener noreferrer" class="contact-info-link">' + escapeHtml(f.city) + '</a>');
       }
+      if (f.email) contactParts.push('<a href="mailto:' + escapeHtml(f.email) + '" class="contact-info-link">' + escapeHtml(f.email) + '</a>');
+      if (f.phoneHref || f.phoneDisplay) {
+        var phoneNum = (f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '');
+        contactParts.push('<a href="tel:' + escapeHtml(phoneNum) + '" class="contact-info-link">' + escapeHtml(f.phoneDisplay || f.phoneHref || '') + '</a>');
+      }
+      var contactHtml = contactParts.length ? contactParts.join('<span class="contact-info-sep"> · </span>') : '';
+      var contactInfo = document.getElementById('contact-info');
+      if (contactInfo) contactInfo.innerHTML = contactHtml ? '<p class="contact-info-text">' + contactHtml + '</p>' : '';
+      var footerContactInfo = document.getElementById('footer-contact-info');
+      if (footerContactInfo) footerContactInfo.innerHTML = contactHtml;
 
       updateDots();
     }
@@ -482,7 +473,16 @@
       requestAnimationFrame(function() {
         updateDots();
         var minimalFooter = document.getElementById('minimal-footer');
-        if (minimalFooter) minimalFooter.classList.toggle('visible', window.scrollY > 60);
+        var kontaktPanel = document.getElementById('kontakt');
+        if (minimalFooter) {
+          var showFooter = window.scrollY > 60;
+          if (kontaktPanel) {
+            var kontaktTop = kontaktPanel.offsetTop;
+            var viewportPastKontakt = window.scrollY + window.innerHeight * 0.25 >= kontaktTop;
+            if (viewportPastKontakt) showFooter = false;
+          }
+          minimalFooter.classList.toggle('visible', showFooter);
+        }
         scrollTick = false;
       });
     }
@@ -490,7 +490,15 @@
     window.addEventListener('load', function() {
       updateDots();
       var minimalFooter = document.getElementById('minimal-footer');
-      if (minimalFooter) minimalFooter.classList.toggle('visible', window.scrollY > 60);
+      var kontaktPanel = document.getElementById('kontakt');
+      if (minimalFooter) {
+        var showFooter = window.scrollY > 60;
+        if (kontaktPanel) {
+          var kontaktTop = kontaktPanel.offsetTop;
+          if (window.scrollY + window.innerHeight * 0.25 >= kontaktTop) showFooter = false;
+        }
+        minimalFooter.classList.toggle('visible', showFooter);
+      }
     });
 
     var backToTop = document.getElementById('back-to-top');
