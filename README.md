@@ -1,4 +1,4 @@
-# Perra the Dog — landing
+# perra the dog — landing
 
 Landing dla psiej behawiorystki z sekcjami: hero, usługi, rejestracja (Google Forms), social media.
 
@@ -38,7 +38,7 @@ Po wklejeniu linków zapisz plik i odśwież stronę.
 
 ## Przełącznik koloru akcentu
 
-W menu (nav) jest przełącznik **Biały / Różowy**. Odwiedzający może wybrać kolor akcentu; wybór jest zapisywany w przeglądarce (localStorage) i zostaje po odświeżeniu strony.
+W menu (nav) jest przełącznik **Czarny / Miętowy**. Odwiedzający może wybrać kolor akcentu (czarny lub miętowy); wybór jest zapisywany w przeglądarce (localStorage) i zostaje po odświeżeniu strony. Strona ma jasne, bezowe tło.
 
 ## Usługi z pliku JSON
 

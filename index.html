@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perra the Dog | Behawiorystka psów</title>
+  <title>perra the dog | Behawiorystka psów</title>
   <meta name="description" content="Behawiorystka psów — konsultacje, wizyty w domu, spacery treningowe i warsztaty. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.">
-  <meta property="og:title" content="Perra the Dog | Behawiorystka psów">
+  <meta property="og:title" content="perra the dog | Behawiorystka psów">
   <meta property="og:description" content="Konsultacje behawioralne, wizyty w domu, spacery treningowe i warsztaty. Pomagam budować spokojną więź z psem.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='0.9em' font-size='24'>🐕</text></svg>">
@@ -17,11 +17,11 @@
 <body>
   <a href="#main" class="skip-link">Przejdź do treści</a>
   <nav class="nav">
-    <a href="#" class="logo">Perra<span> the Dog</span></a>
+    <a href="#" class="logo">perra<span> the dog</span></a>
     <div class="nav-right">
       <div class="accent-toggle" role="group" aria-label="Kolor akcentu">
-        <button type="button" class="accent-option" data-accent="white" aria-pressed="true">Biały</button>
-        <button type="button" class="accent-option" data-accent="pink" aria-pressed="false">Różowy</button>
+        <button type="button" class="accent-option" data-accent="black" aria-pressed="true">Czarny</button>
+        <button type="button" class="accent-option" data-accent="mint" aria-pressed="false">Miętowy</button>
       </div>
       <ul class="nav-links">
         <li><a href="#uslugi">Usługi</a></li>
@@ -137,7 +137,7 @@
 
   <footer class="footer">
     <div class="footer-inner wrap">
-      <p class="footer-copy">© <span id="year"></span> Perra the Dog</p>
+      <p class="footer-copy">© <span id="year"></span> perra the dog</p>
       <p class="footer-contact">
         <a href="mailto:TWOJ_EMAIL">TWOJ_EMAIL</a>
         <span class="footer-sep">·</span>
@@ -155,11 +155,11 @@
     const jsonUrl = (container && container.getAttribute('data-json')) || 'services.json';
 
     function getAccent() {
-      try { return localStorage.getItem(ACCENT_KEY) || 'white'; } catch (e) { return 'white'; }
+      try { return localStorage.getItem(ACCENT_KEY) || 'black'; } catch (e) { return 'black'; }
     }
     function setAccent(value) {
       try { localStorage.setItem(ACCENT_KEY, value); } catch (e) {}
-      document.body.classList.toggle('accent-pink', value === 'pink');
+      document.body.classList.toggle('accent-mint', value === 'mint');
       document.querySelectorAll('.accent-option').forEach(btn => {
         const isActive = btn.getAttribute('data-accent') === value;
         btn.classList.toggle('active', isActive);
@@ -168,7 +168,7 @@
     }
 
     const savedAccent = getAccent();
-    document.body.classList.toggle('accent-pink', savedAccent === 'pink');
+    document.body.classList.toggle('accent-mint', savedAccent === 'mint');
 
     document.querySelectorAll('.accent-option').forEach(btn => {
       const isActive = btn.getAttribute('data-accent') === savedAccent;
