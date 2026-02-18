@@ -152,6 +152,7 @@
     });
 
     var DEFAULT_CONFIG = {
+      canonicalUrl: '',
       sections: [
         { id: 'hero', visible: true, order: 0, label: 'Start', sectionLabel: 'Behawiorystka psów', title: 'Zrozum swojego psa.\nZbuduj relację.', intro: 'Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.' },
         { id: 'uslugi', visible: true, order: 1, label: 'Usługi', sectionLabel: 'Co oferuję', title: 'Usługi', intro: '' },
@@ -305,6 +306,17 @@
       if (contactInfo) contactInfo.innerHTML = contactHtml ? '<p class="contact-info-text">' + contactHtml + '</p>' : '';
       var footerContactInfo = document.getElementById('footer-contact-info');
       if (footerContactInfo) footerContactInfo.innerHTML = footerContactHtml;
+
+      var existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) existingCanonical.remove();
+      var canonicalUrl = (cfg.canonicalUrl && String(cfg.canonicalUrl).trim()) ? String(cfg.canonicalUrl).trim() : '';
+      if (canonicalUrl) {
+        if (canonicalUrl.indexOf('http') !== 0) canonicalUrl = 'https://' + canonicalUrl;
+        var linkCanonical = document.createElement('link');
+        linkCanonical.rel = 'canonical';
+        linkCanonical.href = canonicalUrl;
+        document.head.appendChild(linkCanonical);
+      }
 
       var existingSchema = document.getElementById('schema-local-business');
       if (existingSchema) existingSchema.remove();

@@ -40,6 +40,10 @@ Przykład:
 ]
 ```
 
+### Canonical URL (SEO)
+
+- **canonicalUrl** — opcjonalnie: kanoniczny adres strony (np. `"https://twoja-domena.pl/"`). Jeśli ustawiony, w `<head>` dodawany jest `<link rel="canonical" href="...">`. Pusty string lub brak = link nie jest dodawany. Możesz podać URL bez `https://` — zostanie dopisane.
+
 ### Formularze, social media, stopka
 
 - **forms** — tablica `{ "title", "description", "url" }` (np. linki do Google Forms)
