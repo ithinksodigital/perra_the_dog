@@ -1,22 +1,6 @@
 [
-  {
-    "num": "01",
-    "title": "Konsultacja behawioralna",
-    "description": "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy."
-  },
-  {
-    "num": "02",
-    "title": "Wizyty w domu",
-    "description": "Lęk separacyjny, zachowania w domu, socjalizacja — w naturalnym środowisku psa."
-  },
-  {
-    "num": "03",
-    "title": "Spacery treningowe",
-    "description": "Reaktywność, praca na smyczy, spokojne spacery i współpraca na zewnątrz."
-  },
-  {
-    "num": "04",
-    "title": "",
-    "description": ""
-  }
+  {"num":"01","icon":"consultation","title":"Konsultacja behawioralna","description":"Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy."},
+  {"num":"02","icon":"home","title":"Wizyty w domu","description":"Lęk separacyjny, zachowania w domu, socjalizacja — w naturalnym środowisku psa."},
+  {"num":"03","icon":"walk","title":"Spacery treningowe","description":"Reaktywność, praca na smyczy, spokojne spacery i współpraca na zewnątrz."},
+  {"num":"04","icon":"workshop","title":"Warsztaty i szkolenia","description":"Zajęcia grupowe — teoria i praktyka w przyjaznej atmosferze."}
 ]

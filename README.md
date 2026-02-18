@@ -62,6 +62,7 @@ Sekcja „Usługi” jest ładowana z pliku **services.json** (w tym samym folde
 Format każdej usługi:
 
 - `num` — numer (np. `"01"`); opcjonalny (domyślnie 01, 02, …)
+- `icon` — opcjonalna ikona: `consultation`, `home`, `walk`, `workshop` (gdy brak — wybór według kolejności)
 - `title` — tytuł karty
 - `description` — krótki opis (możesz też użyć pola `desc`)
 
@@ -70,6 +71,7 @@ Przykład jednej pozycji:
 ```json
 {
   "num": "01",
+  "icon": "consultation",
   "title": "Konsultacja behawioralna",
   "description": "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy."
 }
