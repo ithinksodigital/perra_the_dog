@@ -27,13 +27,13 @@
     {
       "id": "formularz-zgloszeniowy",
       "visible": true,
-      "order": 4,
+      "order": 5,
       "label": "Formularz zgłoszeniowy"
     },
     {
       "id": "social-media",
       "visible": true,
-      "order": 5,
+      "order": 4,
       "label": "Social media"
     },
     {
