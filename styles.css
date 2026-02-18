@@ -1079,6 +1079,21 @@ body {
   margin-left: 1em;
 }
 
+@media (max-width: 640px) {
+  .contact-info--with-icon .contact-info-text .contact-info-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.5rem;
+  }
+  .contact-info--with-icon .contact-info-text .contact-info-link:first-child {
+    margin-top: 0;
+  }
+  .contact-info--with-icon .contact-info-link--with-icon + .contact-info-link--with-icon {
+    margin-left: 0;
+  }
+}
+
 /* --- Minimalna stopka (pojawia się przy scrollu) --- */
 .footer--minimal {
   position: fixed;
