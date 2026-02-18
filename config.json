@@ -45,32 +45,32 @@
   ],
   "forms": [
     {
-      "title": "Konsultacja behawioralna",
+      "title": " Formularz zgłoszeniowy",
       "description": "Umów pierwszą konsultację",
-      "url": "https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_1"
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSeBlmSgW0-hdwdbopPXT_53mEr9x1yb5A2fLIOyeW7F5iZQrQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnbPgp20v2UxFmPQA3UlZkzlWqzTrVRI1fA2nIhELwokpCsFn3isa-uxTSXUo_aem_9HP5lxxXL5RMWYmZZvc2nQ"
     },
     {
-      "title": "Warsztaty / szkolenia",
-      "description": "Zapisz się na warsztat grupowy",
-      "url": "https://forms.gle/TWOJ_LINK_GOOGLE_FORMS_2"
+      "title": "",
+      "description": "",
+      "url": ""
     }
   ],
   "socials": [
     {
       "name": "Instagram",
-      "url": "https://www.instagram.com/TWOJ_INSTAGRAM/",
+      "url": "https://www.instagram.com/perra_the_dog/",
       "icon": "instagram"
     },
     {
       "name": "Facebook",
-      "url": "https://www.facebook.com/TWOJ_FACEBOOK/",
+      "url": "https://www.facebook.com/perrathedogtrenerka",
       "icon": "facebook"
     }
   ],
   "footer": {
     "city": "Warszawa",
     "mapUrl": "",
-    "email": "TWOJ_EMAIL",
+    "email": "kontakt.perrathedog@gmail.com",
     "phoneHref": "+48TWOJ_TELEFON",
     "phoneDisplay": "+48 TWOJ_TELEFON"
   }
