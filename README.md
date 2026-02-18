@@ -1,6 +1,6 @@
 # perra the dog — landing
 
-Landing dla psiej behawiorystki z sekcjami: hero, usługi, rejestracja (Google Forms), social media.
+Landing dla psiej behawiorystki z sekcjami: hero, usługi, formularz zgłoszeniowy (Google Forms), social media.
 
 ## Jak uruchomić
 
@@ -23,7 +23,7 @@ Wszystko sterowane jest z pliku **config.json**: kolejność i widoczność sekc
 ### Sekcje (kolejność i widoczność)
 
 W `sections` ustawiasz dla każdej sekcji:
-- **id** — identyfikator (hero, uslugi, galeria, opinie, rejestracja, kontakt)
+- **id** — identyfikator (hero, uslugi, galeria, opinie, formularz-zgloszeniowy, kontakt)
 - **visible** — `true` / `false` (czy sekcja ma być widoczna)
 - **order** — liczba (kolejność na stronie; mniejsza = wyżej)
 - **label** — tekst w menu i w nawigacji kropkowej

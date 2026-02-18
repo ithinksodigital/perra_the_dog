@@ -931,6 +931,14 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+
+/* Jeden box formularza — rozciągnięty na całą szerokość sekcji */
+.forms-grid .form-card:only-child {
+  grid-column: 1 / -1;
+  min-height: 180px;
+  padding: 32px 32px;
+}
+
 .form-card {
   display: flex;
   flex-direction: column;
