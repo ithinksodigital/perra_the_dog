@@ -37,18 +37,13 @@
         <div class="hero-glow"></div>
         <div class="hero-grid"></div>
       </div>
-      <div class="hero-content">
-        <div class="hero-inner">
-          <p class="hero-label">Behawiorystka psów</p>
-          <h1 class="hero-title">Zrozum swojego psa.<br>Zbuduj relację.</h1>
-          <p class="hero-desc">Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.</p>
-          <div class="hero-cta">
-            <a href="#rejestracja" class="btn btn-primary">Umów konsultację</a>
-            <a href="#uslugi" class="btn btn-ghost">Usługi</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="images/hero.jpg" alt="Behawiorystka z psem — perra the dog" width="560" height="420" loading="eager">
+      <div class="hero-inner">
+        <p class="hero-label">Behawiorystka psów</p>
+        <h1 class="hero-title">Zrozum swojego psa.<br>Zbuduj relację.</h1>
+        <p class="hero-desc">Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.</p>
+        <div class="hero-cta">
+          <a href="#rejestracja" class="btn btn-primary">Umów konsultację</a>
+          <a href="#uslugi" class="btn btn-ghost">Usługi</a>
         </div>
       </div>
       <a href="#uslugi" class="scroll-hint" aria-label="Przewiń do sekcji Usługi">
@@ -143,9 +138,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    var heroImg = document.querySelector('.hero-image img');
-    if (heroImg) heroImg.addEventListener('error', function() { this.style.display = 'none'; this.parentElement.classList.add('hero-image--error'); });
 
     var ACCENT_KEY = 'perra-accent';
     function getAccent() {
@@ -320,24 +312,14 @@
         loadData();
       });
 
-    var SERVICE_ICONS = {
-      consultation: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M14 4v4M18 4v4M12 14h8M12 18h6"/></svg>',
-      home: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l10-8 10 8v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V14z"/><path d="M12 28V18h8v10"/></svg>',
-      walk: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="16" cy="22" rx="4" ry="5"/><ellipse cx="10" cy="12" rx="2.5" ry="2.5"/><ellipse cx="22" cy="12" rx="2.5" ry="2.5"/><ellipse cx="8" cy="18" rx="2" ry="2"/><ellipse cx="24" cy="18" rx="2" ry="2"/></svg>',
-      workshop: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="10" r="3"/><circle cx="21" cy="10" r="3"/><path d="M6 28c0-4 2.5-6 5-6s5 2 5 6M22 28c0-4 2.5-6 5-6s5 2 5 6"/><path d="M16 12v4M14 16h4"/></svg>'
-    };
-    var DEFAULT_ICON_ORDER = ['consultation', 'home', 'walk', 'workshop'];
-
     function loadData() {
       var container = document.getElementById('services-grid');
       var jsonUrl = (container && container.getAttribute('data-json')) || 'services.json';
       function renderService(item, index) {
         var num = item.num != null ? String(item.num) : String(index + 1).padStart(2, '0');
-        var iconKey = item.icon && SERVICE_ICONS[item.icon] ? item.icon : DEFAULT_ICON_ORDER[index % DEFAULT_ICON_ORDER.length];
-        var iconSvg = SERVICE_ICONS[iconKey] || SERVICE_ICONS.consultation;
         var card = document.createElement('article');
         card.className = 'card';
-        card.innerHTML = '<div class="card-icon">' + iconSvg + '</div><span class="card-num">' + num + '</span><h3>' + escapeHtml(item.title || '') + '</h3><p>' + escapeHtml(item.description || item.desc || '') + '</p>';
+        card.innerHTML = '<span class="card-num">' + num + '</span><h3>' + escapeHtml(item.title || '') + '</h3><p>' + escapeHtml(item.description || item.desc || '') + '</p>';
         return card;
       }
       if (container) {

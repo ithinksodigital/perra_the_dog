@@ -47,10 +47,6 @@ Przykład: żeby ukryć Galerię i dać Opinie przed Usługami:
 
 Linki i dane kontaktowe edytujesz wyłącznie w **config.json**. Przy otwarciu strony z dysku (file://) używany jest wbudowany domyślny config (placeholdery).
 
-## Zdjęcie w Hero
-
-W folderze **images/** umieść plik **hero.jpg** — zdjęcie wyświetla się po prawej stronie (na mobile nad tekstem). Proporcje 4:3 (np. 560×420 px) są optymalne. Jeśli plik nie istnieje, w miejscu zdjęcia pojawi się podpowiedź.
-
 ## Przełącznik koloru akcentu
 
 W menu (nav) jest przełącznik **Czarny / Miętowy**. Odwiedzający może wybrać kolor akcentu (czarny lub miętowy); wybór jest zapisywany w przeglądarce (localStorage) i zostaje po odświeżeniu strony. Strona ma jasne, bezowe tło.
@@ -62,7 +58,6 @@ Sekcja „Usługi” jest ładowana z pliku **services.json** (w tym samym folde
 Format każdej usługi:
 
 - `num` — numer (np. `"01"`); opcjonalny (domyślnie 01, 02, …)
-- `icon` — opcjonalna ikona: `consultation`, `home`, `walk`, `workshop` (gdy brak — wybór według kolejności)
 - `title` — tytuł karty
 - `description` — krótki opis (możesz też użyć pola `desc`)
 
@@ -71,7 +66,6 @@ Przykład jednej pozycji:
 ```json
 {
   "num": "01",
-  "icon": "consultation",
   "title": "Konsultacja behawioralna",
   "description": "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy."
 }
