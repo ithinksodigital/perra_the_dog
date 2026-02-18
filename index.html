@@ -132,7 +132,9 @@
     <button type="button" class="cookie-bar-btn" id="cookie-bar-accept">OK</button>
   </div>
 
-  <a href="#" id="back-to-top" class="back-to-top" aria-label="Przewiń do góry">↑</a>
+  <a href="#" id="back-to-top" class="back-to-top" aria-label="Przewiń do góry">
+    <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </a>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -273,6 +275,28 @@
       if (contactInfo) contactInfo.innerHTML = contactHtml ? '<p class="contact-info-text">' + contactHtml + '</p>' : '';
       var footerContactInfo = document.getElementById('footer-contact-info');
       if (footerContactInfo) footerContactInfo.innerHTML = contactHtml;
+
+      var existingSchema = document.getElementById('schema-local-business');
+      if (existingSchema) existingSchema.remove();
+      var f = cfg.footer || {};
+      var schema = {
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: 'perra the dog',
+        description: 'Behawiorystka psów — konsultacje, wizyty w domu, spacery treningowe i warsztaty. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.',
+        url: typeof location !== 'undefined' ? location.href : ''
+      };
+      if (f.email) schema.email = f.email;
+      if (f.phoneHref || f.phoneDisplay) schema.telephone = (f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '');
+      if (f.city) {
+        schema.address = { '@type': 'PostalAddress', addressLocality: f.city };
+        schema.areaServed = f.city;
+      }
+      var scriptSchema = document.createElement('script');
+      scriptSchema.id = 'schema-local-business';
+      scriptSchema.type = 'application/ld+json';
+      scriptSchema.textContent = JSON.stringify(schema);
+      document.head.appendChild(scriptSchema);
 
       updateDots();
     }

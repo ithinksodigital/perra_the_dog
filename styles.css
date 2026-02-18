@@ -245,11 +245,12 @@ body {
 }
 
 /* --- Back to top --- */
+/* Przycisk „Do góry” — nad stopką (z-index wyższy niż footer), ikona strzałki */
 .back-to-top {
   position: fixed;
-  bottom: 28px;
+  bottom: 76px;
   right: 28px;
-  z-index: 60;
+  z-index: 80;
   width: 48px;
   height: 48px;
   display: flex;
@@ -257,8 +258,6 @@ body {
   justify-content: center;
   background: var(--accent);
   color: var(--accent-text);
-  font-size: 1.25rem;
-  font-weight: 600;
   text-decoration: none;
   border-radius: 50%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
@@ -270,18 +269,36 @@ body {
 .back-to-top:hover {
   background: var(--accent-hover);
   color: var(--accent-text);
+  transform: translateY(-2px);
 }
 .back-to-top.visible {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
+.back-to-top.visible:hover {
+  transform: translateY(-2px);
+}
 .back-to-top:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+.back-to-top-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
 @media (max-width: 900px) {
-  .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 1.1rem; }
+  .back-to-top {
+    bottom: 80px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+  .back-to-top-icon {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* --- Hero --- */
