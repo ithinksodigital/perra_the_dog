@@ -349,7 +349,12 @@ body {
 .hero-inner { position: relative; z-index: 1; padding: 0 32px; max-width: 640px; }
 @media (max-width: 768px) {
   .hero-cta {
-    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
   }
 }
 .hero-label {
