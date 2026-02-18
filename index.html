@@ -37,13 +37,18 @@
         <div class="hero-glow"></div>
         <div class="hero-grid"></div>
       </div>
-      <div class="hero-inner">
-        <p class="hero-label">Behawiorystka psów</p>
-        <h1 class="hero-title">Zrozum swojego psa.<br>Zbuduj relację.</h1>
-        <p class="hero-desc">Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.</p>
-        <div class="hero-cta">
-          <a href="#rejestracja" class="btn btn-primary">Umów konsultację</a>
-          <a href="#uslugi" class="btn btn-ghost">Usługi</a>
+      <div class="hero-content">
+        <div class="hero-inner">
+          <p class="hero-label">Behawiorystka psów</p>
+          <h1 class="hero-title">Zrozum swojego psa.<br>Zbuduj relację.</h1>
+          <p class="hero-desc">Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.</p>
+          <div class="hero-cta">
+            <a href="#rejestracja" class="btn btn-primary">Umów konsultację</a>
+            <a href="#uslugi" class="btn btn-ghost">Usługi</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/hero.jpg" alt="Behawiorystka z psem — perra the dog" width="560" height="420" loading="eager">
         </div>
       </div>
       <a href="#uslugi" class="scroll-hint" aria-label="Przewiń do sekcji Usługi">
@@ -138,6 +143,9 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    var heroImg = document.querySelector('.hero-image img');
+    if (heroImg) heroImg.addEventListener('error', function() { this.style.display = 'none'; this.parentElement.classList.add('hero-image--error'); });
 
     var ACCENT_KEY = 'perra-accent';
     function getAccent() {

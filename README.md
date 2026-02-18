@@ -47,6 +47,10 @@ Przykład: żeby ukryć Galerię i dać Opinie przed Usługami:
 
 Linki i dane kontaktowe edytujesz wyłącznie w **config.json**. Przy otwarciu strony z dysku (file://) używany jest wbudowany domyślny config (placeholdery).
 
+## Zdjęcie w Hero
+
+W folderze **images/** umieść plik **hero.jpg** — zdjęcie wyświetla się po prawej stronie (na mobile nad tekstem). Proporcje 4:3 (np. 560×420 px) są optymalne. Jeśli plik nie istnieje, w miejscu zdjęcia pojawi się podpowiedź.
+
 ## Przełącznik koloru akcentu
 
 W menu (nav) jest przełącznik **Czarny / Miętowy**. Odwiedzający może wybrać kolor akcentu (czarny lub miętowy); wybór jest zapisywany w przeglądarce (localStorage) i zostaje po odświeżeniu strony. Strona ma jasne, bezowe tło.
