@@ -46,22 +46,13 @@
       "intro": "Wypełnij formularz — odpowiem najszybciej jak to możliwe."
     },
     {
-      "id": "social-media",
-      "visible": true,
-      "order": 5,
-      "label": "Social media",
-      "sectionLabel": "Bądźmy w kontakcie",
-      "title": "Social media",
-      "intro": "Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś."
-    },
-    {
       "id": "kontakt",
       "visible": true,
-      "order": 6,
+      "order": 5,
       "label": "Kontakt",
-      "sectionLabel": "Kontakt",
+      "sectionLabel": "Bądźmy w kontakcie",
       "title": "Kontakt",
-      "intro": "Lokalizacja, e-mail i telefon."
+      "intro": "Social media, lokalizacja, e-mail i telefon."
     }
   ],
   "forms": [

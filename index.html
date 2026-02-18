@@ -11,7 +11,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='0.9em' font-size='24'>🐕</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -101,21 +101,13 @@
       </div>
     </section>
 
-    <section id="social-media" class="panel section">
-      <div class="wrap">
-        <p class="label">Bądźmy w kontakcie</p>
-        <h2 class="title">Social media</h2>
-        <p class="intro">Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś.</p>
-        <div id="socials-container" class="socials"><!-- Instagram, Facebook z config.json --></div>
-      </div>
-    </section>
-
     <section id="kontakt" class="panel section">
       <div class="wrap">
-        <p class="label">Kontakt</p>
+        <p class="label">Bądźmy w kontakcie</p>
         <h2 class="title">Kontakt</h2>
-        <p class="intro">Lokalizacja, e-mail i telefon.</p>
-        <div id="contact-info" class="contact-info"><!-- Warszawa, email, telefon z config.json --></div>
+        <p class="intro">Social media, lokalizacja, e-mail i telefon.</p>
+        <div id="socials-container" class="socials"><!-- Instagram, Facebook z config.json --></div>
+        <div id="contact-info" class="contact-info contact-info--with-icon"><!-- Warszawa (z pinezką), email, telefon z config.json --></div>
       </div>
     </section>
   </main>
@@ -166,8 +158,7 @@
         { id: 'galeria', visible: true, order: 2, label: 'Galeria', sectionLabel: 'Zdjęcia', title: 'Galeria', intro: 'Kadry z konsultacji, spacerów i warsztatów.' },
         { id: 'opinie', visible: true, order: 3, label: 'Opinie', sectionLabel: 'Co mówią opiekunowie', title: 'Opinie', intro: 'Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów.' },
         { id: 'formularz-zgloszeniowy', visible: true, order: 4, label: 'Formularz zgłoszeniowy', sectionLabel: 'Zapisz się', title: 'Formularz zgłoszeniowy', intro: 'Wypełnij formularz — odpowiem najszybciej jak to możliwe.' },
-        { id: 'social-media', visible: true, order: 5, label: 'Social media', sectionLabel: 'Bądźmy w kontakcie', title: 'Social media', intro: 'Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś.' },
-        { id: 'kontakt', visible: true, order: 6, label: 'Kontakt', sectionLabel: 'Kontakt', title: 'Kontakt', intro: 'Lokalizacja, e-mail i telefon.' }
+        { id: 'kontakt', visible: true, order: 5, label: 'Kontakt', sectionLabel: 'Bądźmy w kontakcie', title: 'Kontakt', intro: 'Social media, lokalizacja, e-mail i telefon.' }
       ],
       forms: [
         { title: 'Konsultacja behawioralna', description: 'Umów pierwszą konsultację', url: '#' },
@@ -289,20 +280,29 @@
 
       var f = cfg.footer || {};
       var contactParts = [];
+      var footerParts = [];
+      var pinSvg = '<svg class="contact-info-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>';
       if (f.city) {
         var locHref = (f.mapUrl && f.mapUrl.trim()) ? f.mapUrl : ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(f.city));
-        contactParts.push('<a href="' + locHref + '" target="_blank" rel="noopener noreferrer" class="contact-info-link">' + escapeHtml(f.city) + '</a>');
+        if (locHref.indexOf('http') !== 0) locHref = 'https://' + locHref;
+        contactParts.push('<a href="' + locHref + '" target="_blank" rel="noopener noreferrer" class="contact-info-link contact-info-link--city">' + pinSvg + escapeHtml(f.city) + '</a>');
+        footerParts.push('<a href="' + locHref + '" target="_blank" rel="noopener noreferrer" class="contact-info-link">' + escapeHtml(f.city) + '</a>');
       }
-      if (f.email) contactParts.push('<a href="mailto:' + escapeHtml(f.email) + '" class="contact-info-link">' + escapeHtml(f.email) + '</a>');
+      if (f.email) {
+        contactParts.push('<a href="mailto:' + escapeHtml(f.email) + '" class="contact-info-link">' + escapeHtml(f.email) + '</a>');
+        footerParts.push('<a href="mailto:' + escapeHtml(f.email) + '" class="contact-info-link">' + escapeHtml(f.email) + '</a>');
+      }
       if (f.phoneHref || f.phoneDisplay) {
         var phoneNum = (f.phoneHref || f.phoneDisplay || '').replace(/\s/g, '');
         contactParts.push('<a href="tel:' + escapeHtml(phoneNum) + '" class="contact-info-link">' + escapeHtml(f.phoneDisplay || f.phoneHref || '') + '</a>');
+        footerParts.push('<a href="tel:' + escapeHtml(phoneNum) + '" class="contact-info-link">' + escapeHtml(f.phoneDisplay || f.phoneHref || '') + '</a>');
       }
       var contactHtml = contactParts.length ? contactParts.join('<span class="contact-info-sep"> · </span>') : '';
+      var footerContactHtml = footerParts.length ? footerParts.join('<span class="contact-info-sep"> · </span>') : '';
       var contactInfo = document.getElementById('contact-info');
       if (contactInfo) contactInfo.innerHTML = contactHtml ? '<p class="contact-info-text">' + contactHtml + '</p>' : '';
       var footerContactInfo = document.getElementById('footer-contact-info');
-      if (footerContactInfo) footerContactInfo.innerHTML = contactHtml;
+      if (footerContactInfo) footerContactInfo.innerHTML = footerContactHtml;
 
       var existingSchema = document.getElementById('schema-local-business');
       if (existingSchema) existingSchema.remove();
