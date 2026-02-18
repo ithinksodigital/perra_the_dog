@@ -26,9 +26,9 @@
     },
     {
       "id": "rejestracja",
-      "visible": false,
+      "visible": true,
       "order": 4,
-      "label": "Rejestracja"
+      "label": "Formularz zgłoszeniowy"
     },
     {
       "id": "social-media",
@@ -48,11 +48,6 @@
       "title": " Formularz zgłoszeniowy",
       "description": "Umów pierwszą konsultację",
       "url": "https://docs.google.com/forms/d/e/1FAIpQLSeBlmSgW0-hdwdbopPXT_53mEr9x1yb5A2fLIOyeW7F5iZQrQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnbPgp20v2UxFmPQA3UlZkzlWqzTrVRI1fA2nIhELwokpCsFn3isa-uxTSXUo_aem_9HP5lxxXL5RMWYmZZvc2nQ"
-    },
-    {
-      "title": "",
-      "description": "",
-      "url": ""
     }
   ],
   "socials": [
