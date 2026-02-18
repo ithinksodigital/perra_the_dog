@@ -1022,6 +1022,21 @@ body {
   border-color: transparent;
 }
 
+/* W sekcji Kontakt przyciski social mniejsze, żeby pasowały do linii z ikonami */
+#kontakt .socials {
+  gap: 12px;
+}
+#kontakt .social {
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  gap: 10px;
+}
+#kontakt .social svg {
+  width: 18px;
+  height: 18px;
+}
+
 /* --- Sekcja Kontakt (tekst z linkami) --- */
 .contact-info {
   margin: 0;
