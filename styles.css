@@ -13,8 +13,8 @@
   --accent-dim: rgba(0, 0, 0, 0.06);
   --accent-text: #ffffff;
   --white: #ffffff;
-  --font-heading: 'Cormorant Garamond', serif;
-  --font-body: 'Open Sans', sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
 }
