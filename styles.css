@@ -1,11 +1,12 @@
 /* --- Modern one-pager (jasne, bezowe tło) --- */
+/* Kolory z kontrastem ≥ 4.5:1 (WCAG AA) na tle --bg / --bg-card */
 :root {
   --bg: #f5f3ef;
   --bg-card: #ffffff;
   --surface: #ebe8e3;
   --border: rgba(0, 0, 0, 0.08);
   --text: #1a1a1a;
-  --text-muted: #5c5c63;
+  --text-muted: #45454d;
   /* Akcent domyślnie czarny; przełącznik w nav: Miętowy */
   --accent: #1a1a1a;
   --accent-hover: #333333;
@@ -14,15 +15,14 @@
   --white: #ffffff;
   --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Open Sans', sans-serif;
-  /* Alternatywa: 'Nunito', sans-serif — okrąglejszy, cieplejszy */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
 }
 
 body.accent-mint {
-  --accent: #7eb8a4;
-  --accent-hover: #6ba391;
-  --accent-dim: rgba(126, 184, 164, 0.2);
+  --accent: #4d8a76;
+  --accent-hover: #3d7262;
+  --accent-dim: rgba(77, 138, 118, 0.2);
   --accent-text: #1a1a1a;
 }
 
