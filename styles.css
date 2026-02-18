@@ -1044,7 +1044,7 @@ body {
 .contact-info-link:hover {
   border-bottom-color: var(--accent);
 }
-.contact-info-link--city {
+.contact-info-link--with-icon {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1059,6 +1059,9 @@ body {
   color: var(--text-muted);
   font-weight: 400;
   pointer-events: none;
+}
+.contact-info--with-icon .contact-info-link--with-icon + .contact-info-link--with-icon {
+  margin-left: 1em;
 }
 
 /* --- Minimalna stopka (pojawia się przy scrollu) --- */
