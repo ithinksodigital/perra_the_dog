@@ -12,8 +12,9 @@
   --accent-dim: rgba(0, 0, 0, 0.06);
   --accent-text: #ffffff;
   --white: #ffffff;
-  --font-heading: 'Syne', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Cormorant', serif;
+  --font-body: 'Karla', sans-serif;
+  /* Alternatywa: 'Nunito', sans-serif — okrąglejszy, cieplejszy */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
 }
@@ -94,8 +95,8 @@ body {
 }
 .logo {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.28rem;
   letter-spacing: 0.02em;
   color: var(--text);
   text-decoration: none;
@@ -376,7 +377,7 @@ body {
 }
 .hero-label {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -385,9 +386,9 @@ body {
 }
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5.5vw, 3.75rem);
+  font-size: clamp(2.6rem, 6vw, 4rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.18;
   letter-spacing: 0.01em;
   margin: 0 0 24px 0;
   color: var(--text);
@@ -491,7 +492,7 @@ body {
 .section-tint .wrap { position: relative; z-index: 1; }
 .label {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -500,7 +501,7 @@ body {
 }
 .title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 4.5vw, 3.35rem);
   font-weight: 800;
   letter-spacing: 0.01em;
   line-height: 1.22;
@@ -542,8 +543,8 @@ body {
 }
 .card h3 {
   font-family: var(--font-heading);
-  font-size: 1.08rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 800;
   margin: 0 0 10px 0;
   color: var(--text);
   letter-spacing: 0.02em;
@@ -682,7 +683,7 @@ body {
   color: var(--accent);
   opacity: 0.95;
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
 }
 .testimonial-meta {
   display: flex;
@@ -698,7 +699,7 @@ body {
   font-family: var(--font-heading);
   color: var(--text);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
 }
 .testimonial-context {
   font-size: 0.85rem;
@@ -938,8 +939,8 @@ body {
 }
 .form-card-title {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.08rem;
+  font-weight: 800;
+  font-size: 1.15rem;
   display: block;
   margin-bottom: 4px;
   letter-spacing: 0.02em;
