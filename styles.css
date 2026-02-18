@@ -1025,6 +1025,7 @@ body {
 /* W sekcji Kontakt przyciski social mniejsze, żeby pasowały do linii z ikonami */
 #kontakt .socials {
   gap: 12px;
+  margin-top: 32px;
 }
 #kontakt .social {
   padding: 12px 20px;
@@ -1042,7 +1043,7 @@ body {
   margin: 0;
 }
 .contact-info--with-icon {
-  margin-top: 32px;
+  margin-bottom: 0;
 }
 .contact-info-text {
   margin: 0;
