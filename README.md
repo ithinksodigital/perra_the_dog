@@ -27,15 +27,16 @@ W `sections` ustawiasz dla każdej sekcji:
 - **visible** — `true` / `false` (czy sekcja ma być widoczna)
 - **order** — liczba (kolejność na stronie; mniejsza = wyżej)
 - **label** — tekst w menu i w nawigacji kropkowej
+- **sectionLabel** — opcjonalnie: mały napis nad tytułem sekcji (np. „Co oferuję”)
+- **title** — tytuł sekcji (h1 w hero, h2 w pozostałych). W hero możesz użyć `\n` dla łamania linii.
+- **intro** — opcjonalnie: krótki opis pod tytułem (paragraf). Pusty string lub brak = opis jest ukryty.
 
-Przykład: żeby ukryć Galerię i dać Opinie przed Usługami:
+Przykład:
 ```json
 "sections": [
-  { "id": "hero", "visible": true, "order": 0, "label": "Start" },
-  { "id": "opinie", "visible": true, "order": 1, "label": "Opinie" },
-  { "id": "uslugi", "visible": true, "order": 2, "label": "Usługi" },
-  { "id": "galeria", "visible": false, "order": 3, "label": "Galeria" },
-  ...
+  { "id": "hero", "visible": true, "order": 0, "label": "Start", "sectionLabel": "Behawiorystka psów", "title": "Zrozum swojego psa.\nZbuduj relację.", "intro": "Pomagam opiekunom..." },
+  { "id": "uslugi", "visible": true, "order": 1, "label": "Usługi", "sectionLabel": "Co oferuję", "title": "Usługi", "intro": "" },
+  { "id": "galeria", "visible": false, "order": 2, "label": "Galeria", "sectionLabel": "Zdjęcia", "title": "Galeria", "intro": "Kadry z konsultacji..." }
 ]
 ```
 

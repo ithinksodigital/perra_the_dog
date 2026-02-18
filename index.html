@@ -161,13 +161,13 @@
 
     var DEFAULT_CONFIG = {
       sections: [
-        { id: 'hero', visible: true, order: 0, label: 'Start' },
-        { id: 'uslugi', visible: true, order: 1, label: 'Usługi' },
-        { id: 'galeria', visible: true, order: 2, label: 'Galeria' },
-        { id: 'opinie', visible: true, order: 3, label: 'Opinie' },
-        { id: 'formularz-zgloszeniowy', visible: true, order: 4, label: 'Formularz zgłoszeniowy' },
-        { id: 'social-media', visible: true, order: 5, label: 'Social media' },
-        { id: 'kontakt', visible: true, order: 6, label: 'Kontakt' }
+        { id: 'hero', visible: true, order: 0, label: 'Start', sectionLabel: 'Behawiorystka psów', title: 'Zrozum swojego psa.\nZbuduj relację.', intro: 'Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.' },
+        { id: 'uslugi', visible: true, order: 1, label: 'Usługi', sectionLabel: 'Co oferuję', title: 'Usługi', intro: '' },
+        { id: 'galeria', visible: true, order: 2, label: 'Galeria', sectionLabel: 'Zdjęcia', title: 'Galeria', intro: 'Kadry z konsultacji, spacerów i warsztatów.' },
+        { id: 'opinie', visible: true, order: 3, label: 'Opinie', sectionLabel: 'Co mówią opiekunowie', title: 'Opinie', intro: 'Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów.' },
+        { id: 'formularz-zgloszeniowy', visible: true, order: 4, label: 'Formularz zgłoszeniowy', sectionLabel: 'Zapisz się', title: 'Formularz zgłoszeniowy', intro: 'Wypełnij formularz — odpowiem najszybciej jak to możliwe.' },
+        { id: 'social-media', visible: true, order: 5, label: 'Social media', sectionLabel: 'Bądźmy w kontakcie', title: 'Social media', intro: 'Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś.' },
+        { id: 'kontakt', visible: true, order: 6, label: 'Kontakt', sectionLabel: 'Kontakt', title: 'Kontakt', intro: 'Lokalizacja, e-mail i telefon.' }
       ],
       forms: [
         { title: 'Konsultacja behawioralna', description: 'Umów pierwszą konsultację', url: '#' },
@@ -200,6 +200,34 @@
           if (sections.every(function(s) { return s.id !== p.id; })) p.style.display = 'none';
         });
       }
+
+      /* Tytuły i opisy sekcji z config (sectionLabel, title, intro) */
+      var allSections = cfg.sections || [];
+      allSections.forEach(function(s) {
+        var panel = document.getElementById(s.id);
+        if (!panel) return;
+        var sectionLabel = s.sectionLabel != null ? s.sectionLabel : s.label;
+        var title = s.title != null ? s.title : s.label;
+        var intro = s.intro != null ? s.intro : (s.description != null ? s.description : '');
+        if (s.id === 'hero') {
+          var hl = panel.querySelector('.hero-label');
+          var ht = panel.querySelector('.hero-title');
+          var hd = panel.querySelector('.hero-desc');
+          if (hl && sectionLabel !== undefined) hl.textContent = sectionLabel || '';
+          if (ht && title !== undefined) {
+            if (String(title).indexOf('\n') !== -1) ht.innerHTML = escapeHtml(title).replace(/\n/g, '<br>');
+            else ht.textContent = title || '';
+          }
+          if (hd) { hd.textContent = intro || ''; hd.style.display = intro ? '' : 'none'; }
+        } else {
+          var labelEl = panel.querySelector('.wrap .label');
+          var titleEl = panel.querySelector('.wrap .title');
+          var introEl = panel.querySelector('.wrap .intro');
+          if (labelEl && sectionLabel !== undefined) labelEl.textContent = sectionLabel || '';
+          if (titleEl && title !== undefined) titleEl.textContent = title || '';
+          if (introEl) { introEl.textContent = intro || ''; introEl.style.display = intro ? '' : 'none'; }
+        }
+      });
 
       var navLinks = document.getElementById('nav-links');
       if (navLinks) {

@@ -4,63 +4,76 @@
       "id": "hero",
       "visible": true,
       "order": 0,
-      "label": "Start"
+      "label": "Start",
+      "sectionLabel": "Behawiorystka psów",
+      "title": "Zrozum swojego psa.\nZbuduj relację.",
+      "intro": "Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą."
     },
     {
       "id": "uslugi",
       "visible": true,
       "order": 1,
-      "label": "Usługi"
+      "label": "Usługi",
+      "sectionLabel": "Co oferuję",
+      "title": "Usługi",
+      "intro": ""
     },
     {
       "id": "galeria",
       "visible": true,
       "order": 2,
-      "label": "Galeria"
+      "label": "Galeria",
+      "sectionLabel": "Zdjęcia",
+      "title": "Galeria",
+      "intro": "Kadry z konsultacji, spacerów i warsztatów."
     },
     {
       "id": "opinie",
       "visible": true,
       "order": 3,
-      "label": "Opinie"
+      "label": "Opinie",
+      "sectionLabel": "Co mówią opiekunowie",
+      "title": "Opinie",
+      "intro": "Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów."
     },
     {
       "id": "formularz-zgloszeniowy",
       "visible": true,
-      "order": 5,
-      "label": "Formularz zgłoszeniowy"
+      "order": 4,
+      "label": "Formularz zgłoszeniowy",
+      "sectionLabel": "Zapisz się",
+      "title": "Formularz zgłoszeniowy",
+      "intro": "Wypełnij formularz — odpowiem najszybciej jak to możliwe."
     },
     {
       "id": "social-media",
       "visible": true,
-      "order": 4,
-      "label": "Social media"
+      "order": 5,
+      "label": "Social media",
+      "sectionLabel": "Bądźmy w kontakcie",
+      "title": "Social media",
+      "intro": "Porady, zdjęcia i inspiracje — obserwuj tam, gdzie jesteś."
     },
     {
       "id": "kontakt",
       "visible": true,
       "order": 6,
-      "label": "Kontakt"
+      "label": "Kontakt",
+      "sectionLabel": "Kontakt",
+      "title": "Kontakt",
+      "intro": "Lokalizacja, e-mail i telefon."
     }
   ],
   "forms": [
     {
-      "title": " Formularz zgłoszeniowy",
+      "title": "Formularz zgłoszeniowy",
       "description": "Umów pierwszą konsultację",
       "url": "https://docs.google.com/forms/d/e/1FAIpQLSeBlmSgW0-hdwdbopPXT_53mEr9x1yb5A2fLIOyeW7F5iZQrQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnbPgp20v2UxFmPQA3UlZkzlWqzTrVRI1fA2nIhELwokpCsFn3isa-uxTSXUo_aem_9HP5lxxXL5RMWYmZZvc2nQ"
     }
   ],
   "socials": [
-    {
-      "name": "Instagram",
-      "url": "https://www.instagram.com/perra_the_dog/",
-      "icon": "instagram"
-    },
-    {
-      "name": "Facebook",
-      "url": "https://www.facebook.com/perrathedogtrenerka",
-      "icon": "facebook"
-    }
+    { "name": "Instagram", "url": "https://www.instagram.com/perra_the_dog/", "icon": "instagram" },
+    { "name": "Facebook", "url": "https://www.facebook.com/perrathedogtrenerka", "icon": "facebook" }
   ],
   "footer": {
     "city": "Warszawa",
