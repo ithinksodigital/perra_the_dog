@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>perra the dog | Behawiorystka psów</title>
-  <meta name="description" content="Behawiorystka psów — konsultacje, wizyty w domu, spacery treningowe i warsztaty. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.">
+  <meta name="description" content="Behawiorystka psów — konsultacje, wizyty w domu i spacery treningowe. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.">
   <meta property="og:title" content="perra the dog | Behawiorystka psów">
-  <meta property="og:description" content="Konsultacje behawioralne, wizyty w domu, spacery treningowe i warsztaty. Pomagam budować spokojną więź z psem.">
+  <meta property="og:description" content="Konsultacje behawioralne, wizyty w domu i spacery treningowe. Pomagam budować spokojną więź z psem.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='0.9em' font-size='24'>🐕</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,8 @@
   body{margin:0;font-family:var(--font-body);font-size:18px;line-height:1.62;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
   .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
   .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 32px;background:rgba(245,243,239,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-  .logo{font-family:var(--font-heading);font-weight:800;font-size:1.28rem;color:var(--text);text-decoration:none}
+  .logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-heading);font-weight:800;font-size:1.28rem;color:var(--text);text-decoration:none}
+  .logo-img{height:42px;width:auto;display:block}
   .logo span{color:var(--text)}
   .nav-right{display:flex;align-items:center;gap:28px}
   .accent-toggle{display:flex;border:1px solid var(--border);border-radius:8px;padding:2px;background:rgba(0,0,0,.04)}
@@ -63,7 +64,7 @@
 <body>
   <a href="#main" class="skip-link">Przejdź do treści</a>
   <nav class="nav">
-    <a href="#" class="logo">perra<span> the dog</span></a>
+    <a href="#" class="logo"><img src="images/logo.svg" alt="perra the dog" class="logo-img">perra<span> the dog</span></a>
     <div class="nav-right">
       <div class="accent-toggle" role="group" aria-label="Kolor akcentu">
         <button type="button" class="accent-option" data-accent="black" aria-pressed="false">Czarny</button>
@@ -85,14 +86,14 @@
       </div>
       <div class="hero-inner">
         <p class="hero-label">Behawiorystka psów</p>
-        <h1 class="hero-title">Zrozum swojego psa.<br>Zbuduj relację.</h1>
-        <p class="hero-desc">Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.</p>
+        <h1 class="hero-title">Spokojne życie z&nbsp;psem?<br>To możliwe!</h1>
+        <p class="hero-desc">Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji.</p>
         <div class="hero-cta">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBlmSgW0-hdwdbopPXT_53mEr9x1yb5A2fLIOyeW7F5iZQrQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnId3qJH6wY5iweP23WpGJVY0xX39S6X0VwL5pXA8Rv9wchYk6CHDRBomHZ7g_aem_sLCSSdq3QrEYQtWFdeJs2g" class="btn btn-primary">Umów konsultację</a>
-          <a href="#uslugi" class="btn btn-ghost">Usługi</a>
+          <a href="#uslugi" class="btn btn-ghost">Oferta</a>
         </div>
       </div>
-      <a href="#uslugi" class="scroll-hint" aria-label="Przewiń do sekcji Usługi">
+      <a href="#uslugi" class="scroll-hint" aria-label="Przewiń do sekcji Oferta">
         <span class="scroll-hint-text">Przewiń w dół</span>
         <div class="scroll-line"></div>
         <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
@@ -102,7 +103,7 @@
     <section id="uslugi" class="panel section">
       <div class="wrap">
         <p class="label">Co oferuję</p>
-        <h2 class="title">Usługi</h2>
+        <h2 class="title">Oferta</h2>
         <div id="services-grid" class="services-grid" data-json="services.json">
           <!-- Karty usług ładowane z services.json -->
         </div>
@@ -113,7 +114,7 @@
       <div class="wrap">
         <p class="label">Zdjęcia</p>
         <h2 class="title">Galeria</h2>
-        <p class="intro">Kadry z konsultacji, spacerów i warsztatów.</p>
+        <p class="intro">Kadry z konsultacji i spacerów.</p>
         <div id="gallery-grid" class="gallery-grid" data-json="gallery.json">
           <!-- Zdjęcia ładowane z gallery.json -->
         </div>
@@ -124,7 +125,7 @@
       <div class="wrap">
         <p class="label">Co mówią opiekunowie</p>
         <h2 class="title">Opinie</h2>
-        <p class="intro">Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów.</p>
+        <p class="intro">Słowa osób, które skorzystały z konsultacji i spacerów.</p>
         <div class="testimonials-slider">
           <div class="testimonials-track-wrap">
             <div id="testimonials-track" class="testimonials-track" data-json="testimonials.json"><!-- slajdy wstawiane z JS --></div>
@@ -151,7 +152,7 @@
       <div class="wrap">
         <p class="label">Bądźmy w kontakcie</p>
         <h2 class="title">Kontakt</h2>
-        <p class="intro">Lokalizacja, e-mail, telefon i social media.</p>
+        <p class="intro"></p>
         <div id="contact-info" class="contact-info contact-info--with-icon"><!-- Warszawa (z pinezką), email, telefon z config.json --></div>
         <div id="socials-container" class="socials"><!-- Instagram, Facebook z config.json --></div>
       </div>
@@ -160,10 +161,15 @@
 
   <footer id="minimal-footer" class="footer footer--minimal">
     <div class="footer-inner wrap">
-      <p class="footer-copy">© <span id="year"></span> perra the dog</p>
       <p id="footer-contact-info" class="footer-contact-info"><!-- Warszawa, email, telefon z config.json --></p>
+      <p class="footer-copy">© <span id="year"></span> perra the dog</p>
     </div>
   </footer>
+
+  <div id="gallery-lightbox" class="gallery-lightbox" aria-hidden="true">
+    <button type="button" id="gallery-lightbox-close" class="gallery-lightbox-close" aria-label="Zamknij podgląd">×</button>
+    <img id="gallery-lightbox-image" class="gallery-lightbox-image" alt="">
+  </div>
 
   <div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Informacja o ciasteczkach">
     <p class="cookie-bar-text">Ta strona używa ciasteczek. <a href="#polityka" id="cookie-policy-link">Polityka prywatności</a>.</p>
@@ -200,16 +206,16 @@
     var DEFAULT_CONFIG = {
       canonicalUrl: '',
       sections: [
-        { id: 'hero', visible: true, order: 0, label: 'Start', sectionLabel: 'Behawiorystka psów', title: 'Zrozum swojego psa.\nZbuduj relację.', intro: 'Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą.' },
-        { id: 'uslugi', visible: true, order: 1, label: 'Usługi', sectionLabel: 'Co oferuję', title: 'Usługi', intro: '' },
-        { id: 'galeria', visible: true, order: 2, label: 'Galeria', sectionLabel: 'Zdjęcia', title: 'Galeria', intro: 'Kadry z konsultacji, spacerów i warsztatów.' },
-        { id: 'opinie', visible: true, order: 3, label: 'Opinie', sectionLabel: 'Co mówią opiekunowie', title: 'Opinie', intro: 'Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów.' },
+        { id: 'hero', visible: true, order: 0, label: 'Start', sectionLabel: 'Behawiorystka psów', title: 'Spokojne życie z psem?\nTo możliwe!', intro: 'Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji.' },
+        { id: 'oferta', visible: true, order: 1, label: 'Oferta', sectionLabel: 'Co oferuję', title: 'Oferta', intro: '' },
+        { id: 'galeria', visible: true, order: 2, label: 'Galeria', sectionLabel: 'Zdjęcia', title: 'Galeria', intro: 'Kadry z konsultacji i spacerów.' },
+        { id: 'opinie', visible: true, order: 3, label: 'Opinie', sectionLabel: 'Co mówią opiekunowie', title: 'Opinie', intro: 'Słowa osób, które skorzystały z konsultacji i spacerów.' },
         { id: 'formularz-zgloszeniowy', visible: true, order: 4, label: 'Formularz zgłoszeniowy', sectionLabel: 'Zapisz się', title: 'Formularz zgłoszeniowy', intro: 'Wypełnij formularz — odpowiem najszybciej jak to możliwe.' },
-        { id: 'kontakt', visible: true, order: 5, label: 'Kontakt', sectionLabel: 'Bądźmy w kontakcie', title: 'Kontakt', intro: 'Lokalizacja, e-mail, telefon i social media.' }
+        { id: 'kontakt', visible: true, order: 5, label: 'Kontakt', sectionLabel: 'Bądźmy w kontakcie', title: 'Kontakt', intro: '' }
       ],
       forms: [
         { title: 'Konsultacja behawioralna', description: 'Umów pierwszą konsultację', url: '#' },
-        { title: 'Warsztaty / szkolenia', description: 'Zapisz się na warsztat grupowy', url: '#' }
+        { title: 'Szkolenie', description: 'Zapisz się na szkolenie grupowe', url: '#' }
       ],
       socials: [
         { name: 'Instagram', url: '#', icon: 'instagram' },
@@ -371,7 +377,7 @@
         '@context': 'https://schema.org',
         '@type': 'ProfessionalService',
         name: 'perra the dog',
-        description: 'Behawiorystka psów — konsultacje, wizyty w domu, spacery treningowe i warsztaty. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.',
+        description: 'Behawiorystka psów — konsultacje, wizyty w domu i spacery treningowe. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.',
         url: typeof location !== 'undefined' ? location.href : ''
       };
       if (f.email) schema.email = f.email;
@@ -419,18 +425,56 @@
       }
 
       var galleryEl = document.getElementById('gallery-grid');
+      var lightboxEl = document.getElementById('gallery-lightbox');
+      var lightboxImg = document.getElementById('gallery-lightbox-image');
+      var lightboxClose = document.getElementById('gallery-lightbox-close');
       var galleryJsonUrl = (galleryEl && galleryEl.getAttribute('data-json')) || 'gallery.json';
+      function openLightbox(src, alt) {
+        if (!lightboxEl || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightboxEl.classList.add('open');
+        lightboxEl.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+      }
+      function closeLightbox() {
+        if (!lightboxEl || !lightboxImg) return;
+        lightboxEl.classList.remove('open');
+        lightboxEl.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+        document.body.classList.remove('no-scroll');
+      }
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightboxEl) {
+        lightboxEl.addEventListener('click', function(e) {
+          if (e.target === lightboxEl) closeLightbox();
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightboxEl && lightboxEl.classList.contains('open')) closeLightbox();
+      });
       function renderPhoto(item) {
         var src = typeof item === 'string' ? item : (item.src || '');
         var alt = (typeof item === 'object' && item && item.alt) ? item.alt : '';
         var box = document.createElement('div');
         box.className = 'photo-box';
+        box.setAttribute('role', 'button');
+        box.setAttribute('tabindex', '0');
+        box.setAttribute('aria-label', alt ? ('Powiększ zdjęcie: ' + alt) : 'Powiększ zdjęcie');
         var img = document.createElement('img');
         img.src = src;
         img.alt = alt;
         img.loading = 'lazy';
         img.onerror = function() { this.style.display = 'none'; this.parentElement.classList.add('photo-box--error'); };
         box.appendChild(img);
+        box.addEventListener('click', function() { openLightbox(src, alt); });
+        box.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(src, alt);
+          }
+        });
         if (alt) { var cap = document.createElement('span'); cap.className = 'photo-box-caption'; cap.textContent = alt; box.appendChild(cap); }
         return box;
       }

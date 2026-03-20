@@ -7,16 +7,16 @@
       "order": 0,
       "label": "Start",
       "sectionLabel": "Behawiorystka psów",
-      "title": "Zrozum swojego psa.\nZbuduj relację.",
-      "intro": "Pomagam opiekunom i czworonogom budować spokojną więź — bez przemocy, z szacunkiem i wiedzą."
+      "title": "Spokojne życie z psem?\nTo możliwe!",
+      "intro": "Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji."
     },
     {
       "id": "uslugi",
       "visible": true,
       "order": 1,
-      "label": "Usługi",
+      "label": "Oferta",
       "sectionLabel": "Co oferuję",
-      "title": "Usługi",
+      "title": "Oferta",
       "intro": ""
     },
     {
@@ -26,7 +26,7 @@
       "label": "Galeria",
       "sectionLabel": "Zdjęcia",
       "title": "Galeria",
-      "intro": "Kadry z konsultacji, spacerów i warsztatów."
+      "intro": "Kadry z konsultacji i spacerów."
     },
     {
       "id": "opinie",
@@ -35,7 +35,7 @@
       "label": "Opinie",
       "sectionLabel": "Co mówią opiekunowie",
       "title": "Opinie",
-      "intro": "Słowa osób, które skorzystały z konsultacji, spacerów lub warsztatów."
+      "intro": "Słowa osób, które skorzystały z konsultacji i spacerów."
     },
     {
       "id": "formularz-zgloszeniowy",
@@ -53,7 +53,7 @@
       "label": "Kontakt",
       "sectionLabel": "Bądźmy w kontakcie",
       "title": "Kontakt",
-      "intro": "Lokalizacja, e-mail, telefon i social media."
+      "intro": ""
     }
   ],
   "forms": [

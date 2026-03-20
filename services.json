@@ -2,21 +2,31 @@
   {
     "num": "01",
     "title": "Konsultacja behawioralna",
-    "description": "Spotkanie diagnostyczne, analiza zachowań i indywidualny plan pracy."
+    "description": ""
   },
   {
     "num": "02",
-    "title": "Wizyty w domu",
-    "description": "Lęk separacyjny, zachowania w domu, socjalizacja — w naturalnym środowisku psa."
+    "title": "Lęk separacyjny",
+    "description": ""
   },
   {
     "num": "03",
-    "title": "Spacery treningowe",
-    "description": "Reaktywność, praca na smyczy, spokojne spacery i współpraca na zewnątrz."
+    "title": "Konsultacje spacerowe",
+    "description": ""
   },
   {
     "num": "04",
-    "title": "",
+    "title": "Konsultacje online",
+    "description": ""
+  },
+  {
+    "num": "05",
+    "title": "Spacery socjalizacyjne",
+    "description": ""
+  },
+  {
+    "num": "06",
+    "title": "Przed pojawieniem się psa",
     "description": ""
   }
 ]

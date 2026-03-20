@@ -1,8 +1,11 @@
 [
-  { "src": "images/foto1.jpg", "alt": "Spacer z psem" },
-  { "src": "images/foto2.jpg", "alt": "Konsultacja" },
-  { "src": "images/foto3.jpg", "alt": "Warsztat" },
-  { "src": "images/foto4.jpg", "alt": "Szkolenie" },
-  { "src": "images/foto5.jpg", "alt": "Pies w terenie" },
-  { "src": "images/foto6.jpg", "alt": "Relacja z opiekunem" }
+  { "src": "images/dog_pic_4.JPEG", "alt": "Czosnek" },
+  { "src": "images/dog_pic_2.JPEG", "alt": "Jordan" },
+  { "src": "images/dog_pic_3.JPEG", "alt": "Benek" },
+  { "src": "images/dog_pic_1.JPEG", "alt": "Kawa" },
+  { "src": "images/dog_pic_5.JPEG", "alt": "Domino" },
+  { "src": "images/dog_pic_6.JPEG", "alt": "Luna" },
+  { "src": "images/dog_pic_7.JPEG", "alt": "Splif" },
+  { "src": "images/dog_pic_8.JPEG", "alt": "Fiołka i Czosnek"},
+  { "src": "images/dog_pic_9.JPEG", "alt": "Lola" }
 ]
