@@ -5,10 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>perra the dog | Behawiorystka psów</title>
   <meta name="description" content="Behawiorystka psów — konsultacje, wizyty w domu i spacery treningowe. Buduję relację między Tobą a psem bez przemocy, z szacunkiem i wiedzą.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="/">
   <meta property="og:title" content="perra the dog | Behawiorystka psów">
   <meta property="og:description" content="Konsultacje behawioralne, wizyty w domu i spacery treningowe. Pomagam budować spokojną więź z psem.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://perrathedog.pl/">
+  <meta property="og:site_name" content="perra the dog">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:image" content="/images/dog_pic_1.webp">
+  <meta property="og:image:alt" content="perra the dog - konsultacje i spacery z psami">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="perra the dog | Behawiorystka psów">
+  <meta name="twitter:description" content="Konsultacje behawioralne, wizyty w domu i spacery treningowe. Pomagam budować spokojną więź z psem.">
+  <meta name="twitter:image" content="/images/dog_pic_1.webp">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='0.9em' font-size='24'>🐕</text></svg>">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"perra the dog","url":"https://perrathedog.pl/","description":"Behawiorystka psów - konsultacje, wizyty w domu i spacery treningowe.","address":{"@type":"PostalAddress","addressLocality":"Warszawa"},"areaServed":"Warszawa","email":"kontakt.perrathedog@gmail.com","telephone":"+48691373718","sameAs":["https://www.instagram.com/perra_the_dog/","https://www.facebook.com/perrathedogtrenerka"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Krytyczny CSS inline — pierwsze malowanie bez blokujących żądań -->
@@ -90,17 +104,17 @@
         <p class="hero-desc">Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji.</p>
         <div class="hero-cta">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBlmSgW0-hdwdbopPXT_53mEr9x1yb5A2fLIOyeW7F5iZQrQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnId3qJH6wY5iweP23WpGJVY0xX39S6X0VwL5pXA8Rv9wchYk6CHDRBomHZ7g_aem_sLCSSdq3QrEYQtWFdeJs2g" class="btn btn-primary">Umów konsultację</a>
-          <a href="#uslugi" class="btn btn-ghost">Oferta</a>
+          <a href="#oferta" class="btn btn-ghost">Oferta</a>
         </div>
       </div>
-      <a href="#uslugi" class="scroll-hint" aria-label="Przewiń do sekcji Oferta">
+      <a href="#oferta" class="scroll-hint" aria-label="Przewiń do sekcji Oferta">
         <span class="scroll-hint-text">Przewiń w dół</span>
         <div class="scroll-line"></div>
         <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
       </a>
     </section>
 
-    <section id="uslugi" class="panel section">
+    <section id="oferta" class="panel section">
       <div class="wrap">
         <p class="label">Co oferuję</p>
         <h2 class="title">Oferta</h2>
@@ -204,7 +218,7 @@
     });
 
     var DEFAULT_CONFIG = {
-      canonicalUrl: '',
+      canonicalUrl: 'https://perrathedog.pl/',
       sections: [
         { id: 'hero', visible: true, order: 0, label: 'Start', sectionLabel: 'Behawiorystka psów', title: 'Spokojne życie z psem?\nTo możliwe!', intro: 'Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji.' },
         { id: 'oferta', visible: true, order: 1, label: 'Oferta', sectionLabel: 'Co oferuję', title: 'Oferta', intro: '' },
@@ -359,11 +373,11 @@
       var footerContactInfo = document.getElementById('footer-contact-info');
       if (footerContactInfo) footerContactInfo.innerHTML = footerContactHtml;
 
-      var existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) existingCanonical.remove();
       var canonicalUrl = (cfg.canonicalUrl && String(cfg.canonicalUrl).trim()) ? String(cfg.canonicalUrl).trim() : '';
       if (canonicalUrl) {
-        if (canonicalUrl.indexOf('http') !== 0) canonicalUrl = 'https://' + canonicalUrl;
+        if (canonicalUrl.indexOf('http') !== 0 && canonicalUrl.indexOf('/') !== 0) canonicalUrl = 'https://' + canonicalUrl;
+        var existingCanonical = document.querySelector('link[rel="canonical"]');
+        if (existingCanonical) existingCanonical.remove();
         var linkCanonical = document.createElement('link');
         linkCanonical.rel = 'canonical';
         linkCanonical.href = canonicalUrl;

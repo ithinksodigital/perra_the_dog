@@ -1,5 +1,5 @@
 {
-  "canonicalUrl": "",
+  "canonicalUrl": "https://perrathedog.pl/",
   "sections": [
     {
       "id": "hero",
@@ -11,7 +11,7 @@
       "intro": "Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji."
     },
     {
-      "id": "uslugi",
+      "id": "oferta",
       "visible": true,
       "order": 1,
       "label": "Oferta",

@@ -1,11 +1,11 @@
 [
-  { "src": "images/dog_pic_4.JPEG", "alt": "Czosnek" },
-  { "src": "images/dog_pic_2.JPEG", "alt": "Jordan" },
-  { "src": "images/dog_pic_3.JPEG", "alt": "Benek" },
-  { "src": "images/dog_pic_1.JPEG", "alt": "Kawa" },
-  { "src": "images/dog_pic_5.JPEG", "alt": "Domino" },
-  { "src": "images/dog_pic_6.JPEG", "alt": "Luna" },
-  { "src": "images/dog_pic_7.JPEG", "alt": "Splif" },
-  { "src": "images/dog_pic_8.JPEG", "alt": "Fiołka i Czosnek"},
-  { "src": "images/dog_pic_9.JPEG", "alt": "Lola" }
+  { "src": "images/dog_pic_4.webp", "alt": "Czosnek" },
+  { "src": "images/dog_pic_2.webp", "alt": "Jordan" },
+  { "src": "images/dog_pic_3.webp", "alt": "Benek" },
+  { "src": "images/dog_pic_1.webp", "alt": "Kawa" },
+  { "src": "images/dog_pic_5.webp", "alt": "Domino" },
+  { "src": "images/dog_pic_6.webp", "alt": "Luna" },
+  { "src": "images/dog_pic_7.webp", "alt": "Splif" },
+  { "src": "images/dog_pic_8.webp", "alt": "Fiołka i Czosnek"},
+  { "src": "images/dog_pic_9.webp", "alt": "Lola" }
 ]
