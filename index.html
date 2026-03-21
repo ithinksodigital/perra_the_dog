@@ -530,7 +530,9 @@
       }
 
       var testimonialsTrack = document.getElementById('testimonials-track');
+      var testimonialsSection = document.getElementById('opinie');
       var testimonialsJsonUrl = (testimonialsTrack && testimonialsTrack.getAttribute('data-json')) || 'testimonials.json';
+      var testimonialsLoaded = false;
       function renderTestimonialSlide(item) {
         var slide = document.createElement('div');
         slide.className = 'testimonial-slide';
@@ -624,13 +626,29 @@
         if (nextBtn) nextBtn.addEventListener('click', function() { goTo(idx + 1); });
         goTo(0);
       }
-      if (testimonialsTrack) {
+      function loadTestimonials() {
+        if (!testimonialsTrack || testimonialsLoaded) return;
+        testimonialsLoaded = true;
         fetch(testimonialsJsonUrl).then(function(r) { return r.ok ? r.json() : Promise.reject(r); }).then(function(data) {
           var list = Array.isArray(data) ? data : (data.testimonials || data.items || []);
           testimonialsTrack.innerHTML = '';
           list.forEach(function(item) { testimonialsTrack.appendChild(renderTestimonialSlide(item)); });
           initTestimonialsSlider(testimonialsTrack);
         }).catch(function() { testimonialsTrack.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik testimonials.json.</p>'; });
+      }
+      if (testimonialsTrack && testimonialsSection) {
+        if ('IntersectionObserver' in window) {
+          var testimonialsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (!entry.isIntersecting) return;
+              loadTestimonials();
+              testimonialsObserver.disconnect();
+            });
+          }, { rootMargin: '300px 0px' });
+          testimonialsObserver.observe(testimonialsSection);
+        } else {
+          loadTestimonials();
+        }
       }
     }
 
