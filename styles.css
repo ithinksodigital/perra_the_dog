@@ -485,11 +485,11 @@ body {
 }
 .btn-primary {
   background: var(--accent);
-  color: var(--accent-text);
+  color: #fff;
 }
 .btn-primary:hover {
   background: var(--accent-hover);
-  color: var(--accent-text);
+  color: #fff;
   transform: translateY(-2px);
 }
 .btn-ghost {
