@@ -1170,7 +1170,7 @@ body.no-scroll {
   left: 0;
   right: 0;
   z-index: 70;
-  padding: 10px 24px;
+  padding: 6px 20px;
   border-top: 1px solid var(--border);
   background: rgba(245, 243, 239, 0.95);
   backdrop-filter: blur(12px);
@@ -1187,13 +1187,15 @@ body.no-scroll {
 }
 .footer--minimal .footer-copy {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
+  line-height: 1.35;
 }
 .footer--minimal .footer-contact-info {
-  margin: 4px 0 0 0;
-  font-size: 0.8rem;
+  margin: 2px 0 0 0;
+  font-size: 0.76rem;
   color: var(--text-muted);
+  line-height: 1.35;
 }
 .footer--minimal .footer-contact-info .contact-info-link {
   color: var(--accent);
