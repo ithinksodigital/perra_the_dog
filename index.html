@@ -469,19 +469,47 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && lightboxEl && lightboxEl.classList.contains('open')) closeLightbox();
       });
+      function getResponsiveGalleryImage(src) {
+        if (!src || /^https?:\/\//i.test(src) || src.indexOf('data:') === 0) return null;
+        var match = src.match(/^(.*)\.(webp|jpe?g|png)$/i);
+        if (!match) return null;
+        return {
+          thumb: match[1] + '-480.jpg',
+          srcset: match[1] + '-480.jpg 480w, ' + match[1] + '-960.jpg 960w',
+          sizes: '(max-width: 500px) calc(100vw - 48px), (max-width: 900px) calc(50vw - 34px), 335px'
+        };
+      }
       function renderPhoto(item) {
         var src = typeof item === 'string' ? item : (item.src || '');
         var alt = (typeof item === 'object' && item && item.alt) ? item.alt : '';
+        var responsiveImage = getResponsiveGalleryImage(src);
         var box = document.createElement('div');
         box.className = 'photo-box';
         box.setAttribute('role', 'button');
         box.setAttribute('tabindex', '0');
         box.setAttribute('aria-label', alt ? ('Powiększ zdjęcie: ' + alt) : 'Powiększ zdjęcie');
         var img = document.createElement('img');
-        img.src = src;
+        img.src = responsiveImage ? responsiveImage.thumb : src;
+        if (responsiveImage) {
+          img.srcset = responsiveImage.srcset;
+          img.sizes = responsiveImage.sizes;
+          img.setAttribute('data-fallback-src', src);
+        }
         img.alt = alt;
         img.loading = 'lazy';
-        img.onerror = function() { this.style.display = 'none'; this.parentElement.classList.add('photo-box--error'); };
+        img.decoding = 'async';
+        img.onerror = function() {
+          var fallbackSrc = this.getAttribute('data-fallback-src');
+          if (fallbackSrc) {
+            this.removeAttribute('data-fallback-src');
+            this.removeAttribute('srcset');
+            this.removeAttribute('sizes');
+            this.src = fallbackSrc;
+            return;
+          }
+          this.style.display = 'none';
+          this.parentElement.classList.add('photo-box--error');
+        };
         box.appendChild(img);
         box.addEventListener('click', function() { openLightbox(src, alt); });
         box.addEventListener('keydown', function(e) {
