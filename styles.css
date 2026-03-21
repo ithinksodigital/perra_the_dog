@@ -1132,6 +1132,13 @@ body.no-scroll {
   color: var(--text-muted);
   line-height: 1.35;
 }
+.footer-legal-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-legal-link:hover {
+  color: var(--accent-hover);
+}
 .footer--minimal .footer-contact-info {
   margin: 2px 0 0 0;
   font-size: 0.76rem;
