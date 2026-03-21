@@ -50,11 +50,7 @@ Przykład:
 - **socials** — tablica `{ "name", "url", "icon": "instagram" | "facebook" }`
 - **footer** — `{ "email", "phoneHref", "phoneDisplay" }` (phoneHref bez spacji, np. +48123456789)
 
-Linki i dane kontaktowe edytujesz wyłącznie w **config.json**. Przy otwarciu strony z dysku (file://) używany jest wbudowany domyślny config (placeholdery).
-
-## Przełącznik koloru akcentu
-
-W menu (nav) jest przełącznik **Czarny / Miętowy**. Odwiedzający może wybrać kolor akcentu (czarny lub miętowy); wybór jest zapisywany w przeglądarce (localStorage) i zostaje po odświeżeniu strony. Strona ma jasne, bezowe tło.
+Linki i dane kontaktowe edytujesz wyłącznie w **config.json**. Plik `config.json` jest wymagany do poprawnego działania strony.
 
 ## Oferta z pliku JSON
 

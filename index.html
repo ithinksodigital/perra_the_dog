@@ -193,26 +193,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    var DEFAULT_CONFIG = {
-      canonicalUrl: 'https://perrathedog.pl/',
-      sections: [
-        { id: 'hero', visible: true, order: 0, label: 'Start', sectionLabel: 'Behawiorystka psów', title: 'Spokojne życie z psem?\nTo możliwe!', intro: 'Cześć, jestem Paulina i wspieram opiekunów w zrozumieniu swojego psa i w budowaniu relacji.' },
-        { id: 'oferta', visible: true, order: 1, label: 'Oferta', sectionLabel: 'Co oferuję', title: 'Oferta', intro: '' },
-        { id: 'galeria', visible: true, order: 2, label: 'Galeria', sectionLabel: 'Zdjęcia', title: 'Galeria', intro: 'Kadry z konsultacji i spacerów.' },
-        { id: 'opinie', visible: true, order: 3, label: 'Opinie', sectionLabel: 'Co mówią opiekunowie', title: 'Opinie', intro: 'Słowa osób, które skorzystały z konsultacji i spacerów.' },
-        { id: 'formularz-zgloszeniowy', visible: true, order: 4, label: 'Formularz zgłoszeniowy', sectionLabel: 'Zapisz się', title: 'Formularz zgłoszeniowy', intro: 'Wypełnij formularz — odpowiem najszybciej jak to możliwe.' },
-        { id: 'kontakt', visible: true, order: 5, label: 'Kontakt', sectionLabel: 'Bądźmy w kontakcie', title: 'Kontakt', intro: '' }
-      ],
-      forms: [
-        { title: 'Konsultacja behawioralna', description: 'Umów pierwszą konsultację', url: '#' },
-        { title: 'Szkolenie', description: 'Zapisz się na szkolenie grupowe', url: '#' }
-      ],
-      socials: [
-        { name: 'Instagram', url: '#', icon: 'instagram' },
-        { name: 'Facebook', url: '#', icon: 'facebook' }
-      ],
-      footer: { city: 'Warszawa', mapUrl: '', email: 'email@example.pl', phoneHref: '+48123456789', phoneDisplay: '+48 123 456 789' }
-    };
     function escapeHtml(text) {
       var div = document.createElement('div');
       div.textContent = text;
@@ -399,9 +379,8 @@
         applyConfig(cfg);
         loadData(servicesDataPromise);
       })
-      .catch(function() {
-        applyConfig(DEFAULT_CONFIG);
-        loadData(servicesDataPromise);
+      .catch(function(err) {
+        console.error('Nie udalo sie zaladowac config.json', err);
       });
 
     function loadData(servicesPromise) {
