@@ -220,7 +220,7 @@ body {
 /* Przycisk „Do góry” — nad stopką (z-index wyższy niż footer), ikona strzałki */
 .back-to-top {
   position: fixed;
-  bottom: 76px;
+  bottom: 58px;
   right: 28px;
   z-index: 80;
   width: 48px;
@@ -262,7 +262,7 @@ body {
 }
 @media (max-width: 900px) {
   .back-to-top {
-    bottom: 80px;
+    bottom: 64px;
     right: 20px;
     width: 44px;
     height: 44px;
@@ -1205,7 +1205,7 @@ body.no-scroll {
   opacity: 0.7;
 }
 .footer {
-  padding: 28px 24px;
+  padding: 18px;
   border-top: 1px solid var(--border);
   text-align: center;
 }
