@@ -181,11 +181,6 @@
     <img id="gallery-lightbox-image" class="gallery-lightbox-image" alt="">
   </div>
 
-  <div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Informacja o ciasteczkach">
-    <p class="cookie-bar-text">Ta strona używa ciasteczek. <a href="#polityka" id="cookie-policy-link">Polityka prywatności</a>.</p>
-    <button type="button" class="cookie-bar-btn" id="cookie-bar-accept">OK</button>
-  </div>
-
   <a href="#" id="back-to-top" class="back-to-top" aria-label="Przewiń do góry">
     <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
   </a>
@@ -727,17 +722,6 @@
       observer.observe(panel);
     });
 
-    var COOKIE_CONSENT_KEY = 'perra-cookies-accepted';
-    var cookieBar = document.getElementById('cookie-bar');
-    if (cookieBar) {
-      try {
-        if (localStorage.getItem(COOKIE_CONSENT_KEY)) cookieBar.classList.add('hidden');
-      } catch (e) {}
-      document.getElementById('cookie-bar-accept').addEventListener('click', function() {
-        try { localStorage.setItem(COOKIE_CONSENT_KEY, '1'); } catch (e) {}
-        cookieBar.classList.add('hidden');
-      });
-    }
   </script>
 </body>
 </html>
