@@ -38,11 +38,13 @@
   .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 32px;background:rgba(245,243,239,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
   .logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-heading);font-weight:800;font-size:1.28rem;color:var(--text);text-decoration:none}
   .logo-img{height:42px;width:auto;display:block}
-  .logo span{color:var(--text)}
+  .logo-text{display:inline-flex;align-items:baseline;gap:.24em}
+  .logo-text span{color:var(--text)}
   .nav-right{display:flex;align-items:center;gap:28px}
-  .accent-toggle{display:flex;border:1px solid var(--border);border-radius:8px;padding:2px;background:rgba(0,0,0,.04)}
-  .accent-option{padding:6px 12px;font-family:var(--font-body);font-size:.8rem;font-weight:500;color:var(--text-muted);background:0;border:0;border-radius:6px;cursor:pointer}
-  .accent-option.active{background:var(--accent);color:var(--accent-text)}
+  .accent-toggle{display:flex;align-items:center;gap:2px;border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:2px;background:rgba(255,255,255,.34)}
+  .accent-option{padding:5px 10px;font-family:var(--font-body);font-size:.72rem;font-weight:500;letter-spacing:.01em;color:rgba(26,26,26,.58);background:0;border:0;border-radius:999px;cursor:pointer;transition:color .2s var(--ease),background .2s var(--ease)}
+  .accent-option:hover{color:var(--text)}
+  .accent-option.active{background:rgba(0,0,0,.08);color:var(--text)}
   .nav-links{display:flex;gap:36px;list-style:none;margin:0;padding:0}
   .nav-links a{color:var(--text-muted);text-decoration:none;font-weight:500;font-size:.95rem}
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:0;border:0;cursor:pointer;padding:8px}
@@ -59,7 +61,8 @@
   .btn-primary{background:var(--accent);color:var(--accent-text)}
   .btn-ghost{background:0;color:var(--text-muted);border:1px solid var(--border)}
   @media(min-width:769px){.section{justify-content:flex-start}}
-  @media(max-width:768px){.panel{padding:88px 0 40px}.hero{min-height:auto;padding-top:104px;padding-bottom:36px}.nav-toggle{display:flex}.nav-right{position:fixed;top:60px;left:0;right:0;flex-direction:column;padding:24px;background:var(--bg);border-bottom:1px solid var(--border);transform:translateY(-120%);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility .3s}.nav-right.open{transform:translateY(0);opacity:1;visibility:visible}.nav-links{flex-direction:column;gap:12px}.hero-cta{flex-direction:column;gap:12px}.hero-cta .btn{width:100%;text-align:center}}
+  @media(max-width:940px){.nav-toggle{display:flex}.nav-right{position:fixed;top:60px;left:0;right:0;flex-direction:column;padding:24px;background:var(--bg);border-bottom:1px solid var(--border);transform:translateY(-120%);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility .3s}.nav-right.open{transform:translateY(0);opacity:1;visibility:visible}.nav-links{flex-direction:column;gap:12px}}
+  @media(max-width:768px){.panel{padding:88px 0 40px}.hero{min-height:auto;padding-top:104px;padding-bottom:36px}.hero-cta{flex-direction:column;gap:12px}.hero-cta .btn{width:100%;text-align:center}}
   </style>
   <!-- Pełny CSS i fonty ładowane asynchronicznie (nie blokują renderowania) -->
   <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -79,7 +82,7 @@
 <body>
   <a href="#main" class="skip-link">Przejdź do treści</a>
   <nav class="nav">
-    <a href="#" class="logo"><img src="images/logo.svg" alt="perra the dog" class="logo-img">perra<span> the dog</span></a>
+    <a href="#" class="logo"><img src="images/logo.svg" alt="perra the dog" class="logo-img"><span class="logo-text"><span>perra</span><span>the dog</span></span></a>
     <div class="nav-right">
       <div class="accent-toggle" role="group" aria-label="Kolor akcentu">
         <button type="button" class="accent-option" data-accent="black" aria-pressed="false">Czarny</button>
