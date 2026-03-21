@@ -227,11 +227,9 @@ body {
 /* --- Panels (one-pager sections) --- */
 .onepage { display: block; }
 .panel {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 120px 0 80px;
+  padding: 96px 0 72px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
@@ -306,16 +304,14 @@ body {
 /* --- Hero --- */
 .hero {
   position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  justify-content: center;
   padding-top: 100px;
   padding-bottom: 80px;
 }
-
-/* Na bardzo wysokich ekranach ograniczamy wysokość hero, żeby nie było pustej przestrzeni */
-@media (min-height: 900px) {
-  .hero {
-    max-height: min(85vh, 820px);
-    min-height: min(100vh, 820px);
-  }
+.section {
+  justify-content: flex-start;
 }
 /* Stagger wejścia elementów hero */
 .hero .hero-label,
@@ -338,6 +334,7 @@ body {
     padding: 88px 0 40px;
   }
   .hero {
+    min-height: auto;
     padding-top: 84px;
     padding-bottom: 36px;
   }

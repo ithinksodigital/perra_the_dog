@@ -47,8 +47,8 @@
   .nav-links a{color:var(--text-muted);text-decoration:none;font-weight:500;font-size:.95rem}
   .nav-toggle{display:none;flex-direction:column;gap:5px;background:0;border:0;cursor:pointer;padding:8px}
   .nav-toggle span{width:22px;height:2px;background:var(--text);border-radius:1px}
-  .panel{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px}
-  .hero{position:relative;padding-top:100px;padding-bottom:80px}
+  .panel{display:flex;flex-direction:column;padding:96px 0 72px}
+  .hero{position:relative;min-height:100vh;min-height:100svh;justify-content:center;padding-top:100px;padding-bottom:80px}
   .hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
   .hero-inner{position:relative;z-index:1;padding:0 32px;max-width:640px}
   .hero-label{font-family:var(--font-heading);font-size:.85rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
@@ -58,7 +58,8 @@
   .btn{display:inline-block;padding:16px 32px;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-decoration:none;border-radius:var(--radius)}
   .btn-primary{background:var(--accent);color:var(--accent-text)}
   .btn-ghost{background:0;color:var(--text-muted);border:1px solid var(--border)}
-  @media(max-width:768px){.nav-toggle{display:flex}.nav-right{position:fixed;top:60px;left:0;right:0;flex-direction:column;padding:24px;background:var(--bg);border-bottom:1px solid var(--border);transform:translateY(-120%);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility .3s}.nav-right.open{transform:translateY(0);opacity:1;visibility:visible}.nav-links{flex-direction:column;gap:12px}.hero-cta{flex-direction:column;gap:12px}.hero-cta .btn{width:100%;text-align:center}}
+  @media(min-width:769px){.section{justify-content:flex-start}}
+  @media(max-width:768px){.panel{padding:88px 0 40px}.hero{min-height:auto;padding-top:84px;padding-bottom:36px}.nav-toggle{display:flex}.nav-right{position:fixed;top:60px;left:0;right:0;flex-direction:column;padding:24px;background:var(--bg);border-bottom:1px solid var(--border);transform:translateY(-120%);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility .3s}.nav-right.open{transform:translateY(0);opacity:1;visibility:visible}.nav-links{flex-direction:column;gap:12px}.hero-cta{flex-direction:column;gap:12px}.hero-cta .btn{width:100%;text-align:center}}
   </style>
   <!-- Pełny CSS i fonty ładowane asynchronicznie (nie blokują renderowania) -->
   <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -626,15 +627,33 @@
       var vh = window.innerHeight;
       var scroll = window.scrollY;
       var current = 'hero';
+      var nearPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
+      if (nearPageEnd) {
+        current = panels[panels.length - 1].id || current;
+      } else {
       panels.forEach(function(p) {
         var top = p.offsetTop;
         if (scroll >= top - vh * 0.4) current = p.id || current;
       });
+      }
       dots.forEach(function(d) {
         var href = d.getAttribute('href');
         var isActive = href === '#' ? current === 'hero' : href.slice(1) === current;
         d.classList.toggle('active', isActive);
       });
+    }
+    function updateMinimalFooterVisibility() {
+      var minimalFooter = document.getElementById('minimal-footer');
+      var kontaktPanel = document.getElementById('kontakt');
+      if (!minimalFooter) return;
+      var showFooter = window.scrollY > 60;
+      if (kontaktPanel) {
+        var kontaktRect = kontaktPanel.getBoundingClientRect();
+        var kontaktVisible = kontaktRect.top < window.innerHeight && kontaktRect.bottom > 0;
+        var nearPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
+        if (kontaktVisible || nearPageEnd) showFooter = false;
+      }
+      minimalFooter.classList.toggle('visible', showFooter);
     }
     var scrollTick = false;
     function onScroll() {
@@ -642,33 +661,14 @@
       scrollTick = true;
       requestAnimationFrame(function() {
         updateDots();
-        var minimalFooter = document.getElementById('minimal-footer');
-        var kontaktPanel = document.getElementById('kontakt');
-        if (minimalFooter) {
-          var showFooter = window.scrollY > 60;
-          if (kontaktPanel) {
-            var kontaktTop = kontaktPanel.offsetTop;
-            var viewportPastKontakt = window.scrollY + window.innerHeight * 0.25 >= kontaktTop;
-            if (viewportPastKontakt) showFooter = false;
-          }
-          minimalFooter.classList.toggle('visible', showFooter);
-        }
+        updateMinimalFooterVisibility();
         scrollTick = false;
       });
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('load', function() {
       updateDots();
-      var minimalFooter = document.getElementById('minimal-footer');
-      var kontaktPanel = document.getElementById('kontakt');
-      if (minimalFooter) {
-        var showFooter = window.scrollY > 60;
-        if (kontaktPanel) {
-          var kontaktTop = kontaktPanel.offsetTop;
-          if (window.scrollY + window.innerHeight * 0.25 >= kontaktTop) showFooter = false;
-        }
-        minimalFooter.classList.toggle('visible', showFooter);
-      }
+      updateMinimalFooterVisibility();
     });
 
     var backToTop = document.getElementById('back-to-top');
