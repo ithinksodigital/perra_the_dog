@@ -98,10 +98,31 @@
       line-height: 1.08;
     }
     .intro {
-      max-width: 700px;
       margin: 0;
       color: var(--text-muted);
       font-size: 1.02rem;
+      line-height: 1.7;
+    }
+    .hero-summary {
+      max-width: 760px;
+      margin-top: 18px;
+      padding: 22px 24px;
+      background: linear-gradient(180deg, rgba(77, 138, 118, 0.1), rgba(77, 138, 118, 0.04));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .meta {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 14px;
+      padding: 6px 10px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 999px;
     }
     .policy-card {
       margin: 20px 0 56px;
@@ -153,6 +174,9 @@
       .hero {
         padding-top: 48px;
       }
+      .hero-summary {
+        padding: 18px 18px;
+      }
       .policy-card {
         padding: 24px 20px;
       }
@@ -174,13 +198,17 @@
     <div class="hero">
       <p class="eyebrow">Informacje prawne</p>
       <h1>Polityka prywatności</h1>
-      <p class="intro">Ta strona ma charakter wizytówki. Nie zawiera własnego formularza kontaktowego, kont użytkowników ani mechanizmów zapisujących dane wprowadzane bezpośrednio na stronie. Poniżej znajdziesz informacje o działaniu strony, linku do Google Forms oraz ewentualnych technicznych danych związanych z hostingiem.</p>
+      <div class="hero-summary">
+        <p class="intro">Ta strona ma charakter wizytówki. Nie zawiera własnego formularza kontaktowego, kont użytkowników ani mechanizmów zapisujących dane wprowadzane bezpośrednio na stronie. Poniżej znajdziesz informacje o działaniu strony, linku do Google Forms oraz ewentualnych technicznych danych związanych z hostingiem.</p>
+        <p class="meta">Ostatnia aktualizacja: marzec 2026</p>
+      </div>
     </div>
 
     <article class="policy-card">
       <section>
         <h2>Administrator danych</h2>
-        <p>Administratorem danych osobowych związanych z kontaktem i współpracą jest Paulina Rustecka.</p>
+        <p>Administratorem danych osobowych związanych z kontaktem i współpracą jest <strong>Paulina Rustecka</strong>.</p>
+        <p>Kontakt w sprawach dotyczących danych osobowych: <a href="mailto:kontakt.perrathedog@gmail.com">kontakt.perrathedog@gmail.com</a>.</p>
       </section>
 
       <section>
@@ -191,13 +219,16 @@
       <section>
         <h2>Dane techniczne i hosting</h2>
         <p>Podczas korzystania ze strony mogą być przetwarzane podstawowe dane techniczne związane z działaniem hostingu i bezpieczeństwem serwisu, takie jak adres IP, dane przeglądarki, data i godzina żądania oraz techniczne logi serwera.</p>
-        <p>Dane te mogą być przetwarzane przez dostawcę hostingu, w zakresie niezbędnym do prawidłowego wyświetlania strony, zapewnienia bezpieczeństwa oraz utrzymania dostępności serwisu.</p>
+        <p>Dane te mogą być przetwarzane przez dostawcę hostingu w zakresie niezbędnym do prawidłowego wyświetlania strony, zapewnienia bezpieczeństwa oraz utrzymania dostępności serwisu. Podstawą przetwarzania jest prawnie uzasadniony interes administratora lub dostawcy hostingu, zgodnie z art. 6 ust. 1 lit. f RODO.</p>
       </section>
 
       <section>
         <h2>Google Forms</h2>
         <p>Na stronie znajduje się link prowadzący do zewnętrznego formularza Google Forms. Przejście do formularza oznacza opuszczenie tej strony i skorzystanie z usługi dostarczanej przez Google.</p>
-        <p>Dane wpisane w formularzu są przekazywane dobrowolnie. Mogą być wykorzystywane do udzielenia odpowiedzi na zapytanie oraz rozpoczęcia współpracy. W zakresie działania samego formularza mogą mieć zastosowanie również zasady prywatności i warunki usług Google.</p>
+        <p>Dane wpisane w formularzu są przekazywane dobrowolnie i mogą być wykorzystywane do udzielenia odpowiedzi na zapytanie oraz rozpoczęcia współpracy. Podstawą przetwarzania jest zgoda osoby, której dane dotyczą, zgodnie z art. 6 ust. 1 lit. a RODO, lub podjęcie działań przed zawarciem umowy, zgodnie z art. 6 ust. 1 lit. b RODO.</p>
+        <p>Dane przechowywane są przez czas niezbędny do udzielenia odpowiedzi lub realizacji współpracy, a następnie do czasu upływu ewentualnych roszczeń.</p>
+        <p>Szczegółowe zasady dotyczące przetwarzania danych za pośrednictwem formularza znajdziesz w <a href="https://docs.google.com/document/d/1S9LOWryEZmS8WajkFauX6Bxi-MWHjAnhbJNfjegnBD8/edit?tab=t.0" target="_blank" rel="noopener noreferrer">odrębnej polityce prywatności formularza</a>.</p>
+        <p>W zakresie działania samego narzędzia Google Forms zastosowanie mają również ogólne zasady prywatności Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
       </section>
 
       <section>
@@ -211,9 +242,19 @@
       </section>
 
       <section>
-        <h2>Kontakt i prawa osoby, której dane dotyczą</h2>
+        <h2>Prawa osoby, której dane dotyczą</h2>
         <p>W sprawach dotyczących danych osobowych przekazanych przez formularz lub podczas kontaktu możesz napisać na adres: <a href="mailto:kontakt.perrathedog@gmail.com">kontakt.perrathedog@gmail.com</a>.</p>
-        <p>Osobie, której dane dotyczą, przysługuje prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, wniesienia sprzeciwu oraz inne uprawnienia wynikające z przepisów RODO, w zakresie właściwym dla konkretnej podstawy przetwarzania.</p>
+        <p>Przysługuje Ci prawo do:</p>
+        <ul>
+          <li>dostępu do swoich danych osobowych,</li>
+          <li>sprostowania (poprawienia) danych,</li>
+          <li>usunięcia danych ("prawo do bycia zapomnianym"),</li>
+          <li>ograniczenia przetwarzania,</li>
+          <li>wniesienia sprzeciwu wobec przetwarzania,</li>
+          <li>przenoszenia danych,</li>
+          <li>cofnięcia zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed cofnięciem zgody).</li>
+        </ul>
+        <p>Masz także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. Więcej informacji znajdziesz na stronie <a href="https://uodo.gov.pl" target="_blank" rel="noopener noreferrer">uodo.gov.pl</a>.</p>
       </section>
     </article>
   </main>
