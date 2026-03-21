@@ -410,18 +410,26 @@
       updateDots();
     }
 
+    function fetchJson(url) {
+      return fetch(url).then(function(r) { return r.ok ? r.json() : Promise.reject(r); });
+    }
+
+    var servicesGrid = document.getElementById('services-grid');
+    var servicesJsonUrl = (servicesGrid && servicesGrid.getAttribute('data-json')) || 'services.json';
+    var servicesDataPromise = fetchJson(servicesJsonUrl).catch(function() { return null; });
+
     fetch('config.json')
       .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
       .then(function(cfg) {
         applyConfig(cfg);
-        loadData();
+        loadData(servicesDataPromise);
       })
       .catch(function() {
         applyConfig(DEFAULT_CONFIG);
-        loadData();
+        loadData(servicesDataPromise);
       });
 
-    function loadData() {
+    function loadData(servicesPromise) {
       var container = document.getElementById('services-grid');
       var jsonUrl = (container && container.getAttribute('data-json')) || 'services.json';
       function renderService(item, index) {
@@ -431,19 +439,31 @@
         card.innerHTML = '<span class="card-num">' + num + '</span><h3>' + escapeHtml(item.title || '') + '</h3><p>' + escapeHtml(item.description || item.desc || '') + '</p>';
         return card;
       }
+      function renderServices(data) {
+        var list = Array.isArray(data) ? data : (data && (data.services || data.items || []));
+        if (!list || !list.length) {
+          container.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik services.json.</p>';
+          return;
+        }
+        container.innerHTML = '';
+        list.forEach(function(item, i) { container.appendChild(renderService(item, i)); });
+      }
       if (container) {
-        fetch(jsonUrl).then(function(r) { return r.ok ? r.json() : Promise.reject(r); }).then(function(data) {
-          var list = Array.isArray(data) ? data : (data.services || data.items || []);
-          container.innerHTML = '';
-          list.forEach(function(item, i) { container.appendChild(renderService(item, i)); });
-        }).catch(function() { container.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik services.json.</p>'; });
+        (servicesPromise || fetchJson(jsonUrl))
+          .then(function(data) {
+            if (!data) throw new Error('no services data');
+            renderServices(data);
+          })
+          .catch(function() { container.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik services.json.</p>'; });
       }
 
       var galleryEl = document.getElementById('gallery-grid');
+      var gallerySection = document.getElementById('galeria');
       var lightboxEl = document.getElementById('gallery-lightbox');
       var lightboxImg = document.getElementById('gallery-lightbox-image');
       var lightboxClose = document.getElementById('gallery-lightbox-close');
       var galleryJsonUrl = (galleryEl && galleryEl.getAttribute('data-json')) || 'gallery.json';
+      var galleryLoaded = false;
       function openLightbox(src, alt) {
         if (!lightboxEl || !lightboxImg) return;
         lightboxImg.src = src;
@@ -521,12 +541,28 @@
         if (alt) { var cap = document.createElement('span'); cap.className = 'photo-box-caption'; cap.textContent = alt; box.appendChild(cap); }
         return box;
       }
-      if (galleryEl) {
-        fetch(galleryJsonUrl).then(function(r) { return r.ok ? r.json() : Promise.reject(r); }).then(function(data) {
+      function loadGallery() {
+        if (!galleryEl || galleryLoaded) return;
+        galleryLoaded = true;
+        fetchJson(galleryJsonUrl).then(function(data) {
           var list = Array.isArray(data) ? data : (data.images || data.photos || data.items || []);
           galleryEl.innerHTML = '';
           list.forEach(function(item) { galleryEl.appendChild(renderPhoto(item)); });
         }).catch(function() { galleryEl.innerHTML = '<p class="services-fallback">Brak danych. Dodaj plik gallery.json.</p>'; });
+      }
+      if (galleryEl && gallerySection) {
+        if ('IntersectionObserver' in window) {
+          var galleryObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (!entry.isIntersecting) return;
+              loadGallery();
+              galleryObserver.disconnect();
+            });
+          }, { rootMargin: '300px 0px' });
+          galleryObserver.observe(gallerySection);
+        } else {
+          loadGallery();
+        }
       }
 
       var testimonialsTrack = document.getElementById('testimonials-track');
